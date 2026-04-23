@@ -1,0 +1,13 @@
+.next/
+node_modules/
+out/
+dist/
+coverage/
+*.log
+*.tsbuildinfo
+.next-dev.*
+.env
+.env.local
+.env.*.local
+!.env.example
+package-lock.json.bak

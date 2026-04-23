@@ -1,0 +1,138 @@
+{
+  "Metadata": {
+    "title": "Aurevia Travel",
+    "description": "Premium international travel booking from Vienna for flights, stays, cars, transfers, tours, and visa support."
+  },
+  "Accessibility": {
+    "skipToContent": "Skip to main content"
+  },
+  "Navigation": {
+    "primaryLabel": "Primary navigation",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "admin": "Admin",
+    "signIn": "Sign in"
+  },
+  "Footer": {
+    "legalLabel": "Legal navigation",
+    "copyright": "(c) {year} Aurevia Travel. Vienna, Austria.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "cookies": "Cookie Policy",
+    "refunds": "Refund Policy"
+  },
+  "CookieConsent": {
+    "label": "Cookie consent",
+    "title": "Cookie preferences",
+    "description": "Aurevia Travel uses essential cookies for secure sessions and may use optional cookies for analytics after consent.",
+    "decline": "Decline optional",
+    "accept": "Accept"
+  },
+  "Home": {
+    "eyebrow": "Vienna based, globally connected",
+    "title": "Aurevia Travel",
+    "lead": "A premium travel booking foundation for international customers, built for flights, stays, cars, transfers, activities, and visa journeys.",
+    "primaryAction": "Enter secure area",
+    "vatBaseline": "Austrian VAT baseline",
+    "currencyBaseline": "Default currency",
+    "globalOpsTitle": "Global customer model",
+    "globalOpsText": "Locale-aware, multi-currency architecture with secure Supabase-native data access.",
+    "servicesEyebrow": "Travel domains",
+    "servicesTitle": "Ready for feature phases",
+    "servicesLead": "Each domain has a dedicated module boundary so supplier integrations, booking snapshots, and user flows can grow cleanly.",
+    "services": {
+      "flights": {
+        "title": "Flights",
+        "description": "Search and booking architecture for global flight offers.",
+        "status": "Provider abstraction prepared."
+      },
+      "hotels": {
+        "title": "Hotels and stays",
+        "description": "Lodging workflows for international inventory.",
+        "status": "Feature module reserved."
+      },
+      "cars": {
+        "title": "Car rental",
+        "description": "Vehicle rental journeys with currency-aware pricing.",
+        "status": "Feature module reserved."
+      },
+      "transfers": {
+        "title": "Airport transfers",
+        "description": "Point-to-point transfer booking foundations.",
+        "status": "Feature module reserved."
+      },
+      "tours": {
+        "title": "Tours and activities",
+        "description": "Curated experiences for destination services.",
+        "status": "Feature module reserved."
+      },
+      "visa": {
+        "title": "Visa applications",
+        "description": "Document-aware application workflows for later phases.",
+        "status": "Storage helper structure prepared."
+      }
+    }
+  },
+  "Auth": {
+    "title": "Secure access",
+    "description": "Authentication screens are reserved for the Supabase Auth phase.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "name@example.com",
+    "submit": "Continue",
+    "backHome": "Back to home"
+  },
+  "Dashboard": {
+    "eyebrow": "Customer area",
+    "title": "Dashboard",
+    "description": "A reserved account surface for bookings, documents, invoices, and saved preferences.",
+    "cardTitle": "Account foundation",
+    "cardBody": "User-owned data will be protected with Supabase Auth and Row Level Security in the relevant feature phases."
+  },
+  "Admin": {
+    "eyebrow": "Operations",
+    "title": "Admin panel",
+    "description": "A reserved operations surface for managing bookings, visa reviews, reports, and platform configuration.",
+    "cardTitle": "Server-side authorization required",
+    "cardBody": "Admin actions will use server-only helpers and role checks before privileged data is accessed."
+  },
+  "Legal": {
+    "privacy": {
+      "eyebrow": "Legal",
+      "title": "Privacy Policy",
+      "intro": "This page reserves the privacy policy surface for GDPR-aware customer flows.",
+      "body": "The production policy should explain controller details, processing purposes, lawful bases, retention, processors, international transfers, data subject rights, and contact channels.",
+      "reviewNotice": "Legal copy must be reviewed by qualified counsel before launch."
+    },
+    "terms": {
+      "eyebrow": "Legal",
+      "title": "Terms of Use",
+      "intro": "This page reserves the terms surface for customer and platform usage rules.",
+      "body": "The production terms should cover account obligations, booking conditions, supplier roles, payment terms, acceptable use, liability limits, jurisdiction, and service availability.",
+      "reviewNotice": "Legal copy must be reviewed by qualified counsel before launch."
+    },
+    "cookies": {
+      "eyebrow": "Legal",
+      "title": "Cookie Policy",
+      "intro": "This page reserves the cookie policy surface and links to the consent mechanism.",
+      "body": "The production policy should list essential and optional cookies, purposes, durations, providers, consent choices, and withdrawal options.",
+      "reviewNotice": "Legal copy must be reviewed by qualified counsel before launch."
+    },
+    "refunds": {
+      "eyebrow": "Legal",
+      "title": "Refund Policy",
+      "intro": "This page reserves the refund policy surface for booking-specific cancellation and refund rules.",
+      "body": "The production policy should distinguish supplier terms, platform fees, cooling-off exceptions, refund timing, chargebacks, and non-refundable services.",
+      "reviewNotice": "Legal and tax treatment must be reviewed before launch."
+    }
+  },
+  "Errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you requested is unavailable or has moved.",
+    "homeAction": "Go home",
+    "errorLabel": "Application error",
+    "errorReference": "Error reference {digest}",
+    "errorTitle": "Something went wrong",
+    "errorDescription": "Please retry the action. If the issue continues, support can investigate with the error reference.",
+    "retryAction": "Try again"
+  }
+}

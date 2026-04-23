@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 30% 98%;
+    --foreground: 218 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 218 30% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 30% 12%;
+    --primary: 178 58% 21%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 262 18% 94%;
+    --secondary-foreground: 262 25% 18%;
+    --muted: 214 22% 94%;
+    --muted-foreground: 218 12% 38%;
+    --accent: 37 72% 49%;
+    --accent-foreground: 32 45% 14%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 20% 86%;
+    --input: 216 20% 86%;
+    --ring: 178 58% 28%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    @apply underline-offset-4;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.35);
+  }
+}
+
+@layer components {
+  .aurevia-surface {
+    @apply border border-border bg-card text-card-foreground shadow-soft;
+  }
+
+  .aurevia-section {
+    @apply container py-12 sm:py-16 lg:py-20;
+  }
+}

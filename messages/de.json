@@ -1,0 +1,138 @@
+{
+  "Metadata": {
+    "title": "Aurevia Travel",
+    "description": "Premium-Reisebuchungen aus Wien fuer Fluege, Aufenthalte, Mietwagen, Transfers, Touren und Visa-Unterstuetzung."
+  },
+  "Accessibility": {
+    "skipToContent": "Zum Hauptinhalt springen"
+  },
+  "Navigation": {
+    "primaryLabel": "Hauptnavigation",
+    "home": "Start",
+    "dashboard": "Dashboard",
+    "admin": "Admin",
+    "signIn": "Anmelden"
+  },
+  "Footer": {
+    "legalLabel": "Rechtliche Navigation",
+    "copyright": "(c) {year} Aurevia Travel. Wien, Oesterreich.",
+    "privacy": "Datenschutzerklaerung",
+    "terms": "Nutzungsbedingungen",
+    "cookies": "Cookie-Richtlinie",
+    "refunds": "Rueckerstattungsrichtlinie"
+  },
+  "CookieConsent": {
+    "label": "Cookie-Einwilligung",
+    "title": "Cookie-Einstellungen",
+    "description": "Aurevia Travel verwendet essenzielle Cookies fuer sichere Sitzungen und optionale Cookies fuer Analysen erst nach Einwilligung.",
+    "decline": "Optionale ablehnen",
+    "accept": "Akzeptieren"
+  },
+  "Home": {
+    "eyebrow": "In Wien ansaessig, global vernetzt",
+    "title": "Aurevia Travel",
+    "lead": "Eine Premium-Grundlage fuer internationale Reisebuchungen, vorbereitet fuer Fluege, Aufenthalte, Mietwagen, Transfers, Aktivitaeten und Visa-Prozesse.",
+    "primaryAction": "Sicheren Bereich oeffnen",
+    "vatBaseline": "Oesterreichische USt.-Basis",
+    "currencyBaseline": "Standardwaehrung",
+    "globalOpsTitle": "Globales Kundenmodell",
+    "globalOpsText": "Lokalisierte, mehrwaehrungsfaehige Architektur mit sicherem Supabase-nativem Datenzugriff.",
+    "servicesEyebrow": "Reisedomains",
+    "servicesTitle": "Bereit fuer Feature-Phasen",
+    "servicesLead": "Jede Domain hat eine eigene Modulgrenze, damit Anbieterintegrationen, Buchungssnapshots und Nutzerfluesse sauber wachsen koennen.",
+    "services": {
+      "flights": {
+        "title": "Fluege",
+        "description": "Such- und Buchungsarchitektur fuer globale Flugangebote.",
+        "status": "Provider-Abstraktion vorbereitet."
+      },
+      "hotels": {
+        "title": "Hotels und Aufenthalte",
+        "description": "Unterkunftsprozesse fuer internationales Inventar.",
+        "status": "Feature-Modul reserviert."
+      },
+      "cars": {
+        "title": "Mietwagen",
+        "description": "Mietwagenprozesse mit waehrungsbewusster Preislogik.",
+        "status": "Feature-Modul reserviert."
+      },
+      "transfers": {
+        "title": "Flughafentransfers",
+        "description": "Grundlagen fuer Punkt-zu-Punkt-Transferbuchungen.",
+        "status": "Feature-Modul reserviert."
+      },
+      "tours": {
+        "title": "Touren und Aktivitaeten",
+        "description": "Kuratierte Erlebnisse fuer Zielgebietsleistungen.",
+        "status": "Feature-Modul reserviert."
+      },
+      "visa": {
+        "title": "Visa-Antraege",
+        "description": "Dokumentenbewusste Antragsprozesse fuer spaetere Phasen.",
+        "status": "Storage-Hilfsstruktur vorbereitet."
+      }
+    }
+  },
+  "Auth": {
+    "title": "Sicherer Zugang",
+    "description": "Authentifizierungsseiten sind fuer die Supabase-Auth-Phase reserviert.",
+    "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "name@example.com",
+    "submit": "Weiter",
+    "backHome": "Zur Startseite"
+  },
+  "Dashboard": {
+    "eyebrow": "Kundenbereich",
+    "title": "Dashboard",
+    "description": "Ein reservierter Kontobereich fuer Buchungen, Dokumente, Rechnungen und gespeicherte Praeferenzen.",
+    "cardTitle": "Konto-Grundlage",
+    "cardBody": "Nutzereigene Daten werden in den relevanten Feature-Phasen mit Supabase Auth und Row Level Security geschuetzt."
+  },
+  "Admin": {
+    "eyebrow": "Betrieb",
+    "title": "Admin-Panel",
+    "description": "Ein reservierter Betriebsbereich fuer Buchungen, Visa-Pruefungen, Berichte und Plattformkonfiguration.",
+    "cardTitle": "Serverseitige Autorisierung erforderlich",
+    "cardBody": "Admin-Aktionen verwenden server-only Helfer und Rollenpruefungen, bevor privilegierte Daten gelesen werden."
+  },
+  "Legal": {
+    "privacy": {
+      "eyebrow": "Rechtliches",
+      "title": "Datenschutzerklaerung",
+      "intro": "Diese Seite reserviert die Datenschutzflaeche fuer DSGVO-bewusste Kundenprozesse.",
+      "body": "Die produktive Erklaerung sollte Verantwortliche, Verarbeitungszwecke, Rechtsgrundlagen, Aufbewahrung, Auftragsverarbeiter, internationale Uebermittlungen, Betroffenenrechte und Kontaktwege erklaeren.",
+      "reviewNotice": "Rechtliche Texte muessen vor dem Launch qualifiziert geprueft werden."
+    },
+    "terms": {
+      "eyebrow": "Rechtliches",
+      "title": "Nutzungsbedingungen",
+      "intro": "Diese Seite reserviert die Bedingungen fuer Kunden- und Plattformregeln.",
+      "body": "Die produktiven Bedingungen sollten Kontopflichten, Buchungsbedingungen, Anbieterrollen, Zahlungsbedingungen, zulaessige Nutzung, Haftungsgrenzen, Gerichtsstand und Serviceverfuegbarkeit abdecken.",
+      "reviewNotice": "Rechtliche Texte muessen vor dem Launch qualifiziert geprueft werden."
+    },
+    "cookies": {
+      "eyebrow": "Rechtliches",
+      "title": "Cookie-Richtlinie",
+      "intro": "Diese Seite reserviert die Cookie-Richtlinie und verweist auf den Einwilligungsmechanismus.",
+      "body": "Die produktive Richtlinie sollte essenzielle und optionale Cookies, Zwecke, Laufzeiten, Anbieter, Einwilligungsoptionen und Widerrufswege auflisten.",
+      "reviewNotice": "Rechtliche Texte muessen vor dem Launch qualifiziert geprueft werden."
+    },
+    "refunds": {
+      "eyebrow": "Rechtliches",
+      "title": "Rueckerstattungsrichtlinie",
+      "intro": "Diese Seite reserviert die Rueckerstattungsregeln fuer buchungsspezifische Storno- und Erstattungsbedingungen.",
+      "body": "Die produktive Richtlinie sollte Anbieterbedingungen, Plattformgebuehren, Ausnahmen vom Widerruf, Erstattungsfristen, Chargebacks und nicht erstattbare Leistungen unterscheiden.",
+      "reviewNotice": "Rechtliche und steuerliche Behandlung muessen vor dem Launch geprueft werden."
+    }
+  },
+  "Errors": {
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundDescription": "Die angeforderte Seite ist nicht verfuegbar oder wurde verschoben.",
+    "homeAction": "Zur Startseite",
+    "errorLabel": "Anwendungsfehler",
+    "errorReference": "Fehlerreferenz {digest}",
+    "errorTitle": "Etwas ist schiefgelaufen",
+    "errorDescription": "Bitte versuche die Aktion erneut. Wenn das Problem bleibt, kann der Support mit der Fehlerreferenz nachsehen.",
+    "retryAction": "Erneut versuchen"
+  }
+}
