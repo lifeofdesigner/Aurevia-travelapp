@@ -67,10 +67,14 @@ class ResendEmailProvider implements EmailProvider {
 
 export function createEmailProvider(): EmailProvider {
   const env = getServerEnv();
+  const from =
+    env.EMAIL_FROM_NAME && !env.EMAIL_FROM.includes("<")
+      ? `${env.EMAIL_FROM_NAME} <${env.EMAIL_FROM}>`
+      : env.EMAIL_FROM;
 
   if (!env.RESEND_API_KEY) {
     return new DevelopmentEmailProvider();
   }
 
-  return new ResendEmailProvider(new Resend(env.RESEND_API_KEY), env.EMAIL_FROM);
+  return new ResendEmailProvider(new Resend(env.RESEND_API_KEY), from);
 }

@@ -7,6 +7,7 @@ export const PERMISSIONS = {
   bookingReadAll: "booking:read:all",
   bookingManageAll: "booking:manage:all",
   visaReview: "visa:review",
+  privacyManage: "privacy:manage",
   adminAccess: "admin:access",
   settingsManage: "settings:manage"
 } as const;
@@ -24,7 +25,9 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
     PERMISSIONS.bookingReadAll,
     PERMISSIONS.bookingManageAll,
     PERMISSIONS.visaReview,
-    PERMISSIONS.adminAccess
+    PERMISSIONS.privacyManage,
+    PERMISSIONS.adminAccess,
+    PERMISSIONS.settingsManage
   ],
   owner: Object.values(PERMISSIONS)
 };

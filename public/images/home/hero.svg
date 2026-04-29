@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Aurevia Travel premium international journey">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6f927f"/>
+      <stop offset="0.48" stop-color="#244f3a"/>
+      <stop offset="1" stop-color="#10271d"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8bd68"/>
+      <stop offset="1" stop-color="#a98632"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <path d="M0 660c190-84 349-116 540-74 136 30 233 89 382 77 182-14 285-124 491-94 87 13 146 40 187 65v266H0z" fill="#0b1f17" opacity=".88"/>
+  <path d="M0 714c210-59 407-61 592-7 158 46 279 105 449 80 166-25 298-112 559-38v151H0z" fill="#f1eadb" opacity=".13"/>
+  <path d="M151 572h288l-34 215H185z" fill="#e9dfcc" opacity=".18"/>
+  <path d="M232 418h135l42 154H190z" fill="#f4ead8" opacity=".24"/>
+  <path d="M255 349h86v69h-86z" fill="#c9a84c" opacity=".72"/>
+  <path d="M1040 362h274l74 425H966z" fill="#e9dfcc" opacity=".16"/>
+  <path d="M1112 250h116l47 112h-210z" fill="#f4ead8" opacity=".2"/>
+  <path d="M1184 153l32 97h-65z" fill="url(#gold)" opacity=".78"/>
+  <path d="M616 322c168 19 301 76 424 165" fill="none" stroke="#d4b452" stroke-width="6" stroke-linecap="round" opacity=".78"/>
+  <path d="M1046 490l-70 15 23-49 47 34z" fill="#d4b452"/>
+  <circle cx="1284" cy="182" r="76" fill="#f2d47b" opacity=".28"/>
+  <circle cx="1284" cy="182" r="38" fill="#f2d47b" opacity=".52"/>
+</svg>

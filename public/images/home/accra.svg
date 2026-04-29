@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Accra coastal destination">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fbdb2"/>
+      <stop offset=".5" stop-color="#5b8d75"/>
+      <stop offset="1" stop-color="#19382a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <path d="M0 520c171 44 335 49 492 14 199-45 371-32 708 81v185H0z" fill="#f6f0e5" opacity=".42"/>
+  <path d="M0 610c162 42 326 47 491 14 209-41 386-29 709 70v106H0z" fill="#10281e" opacity=".86"/>
+  <path d="M220 500c20-118 63-184 126-198 55 59 67 132 39 218" fill="#1c3d2e" opacity=".62"/>
+  <path d="M346 302c92 17 157 57 195 121-101 20-178-2-232-66" fill="#d4b452" opacity=".65"/>
+  <path d="M346 302c-86 26-141 78-166 156 95 6 165-26 211-96" fill="#f6f0e5" opacity=".42"/>
+  <circle cx="860" cy="218" r="76" fill="#f4d479" opacity=".42"/>
+</svg>

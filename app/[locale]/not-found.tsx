@@ -1,7 +1,7 @@
 import {getTranslations} from "next-intl/server";
-import Link from "next/link";
 
 import {Button} from "@/components/ui/button";
+import {Link} from "@/lib/i18n/navigation";
 
 export default async function NotFound() {
   const t = await getTranslations("Errors");
@@ -13,8 +13,8 @@ export default async function NotFound() {
     >
       <div className="max-w-md space-y-5 text-center">
         <p className="text-sm font-semibold uppercase text-primary">404</p>
-        <h1 className="text-3xl font-semibold tracking-normal">{t("notFoundTitle")}</h1>
-        <p className="text-muted-foreground">{t("notFoundDescription")}</p>
+        <h1 className="font-display text-4xl tracking-[0.01em]">{t("notFoundTitle")}</h1>
+        <p className="leading-7 text-muted-foreground">{t("notFoundDescription")}</p>
         <Button asChild>
           <Link href="/">{t("homeAction")}</Link>
         </Button>

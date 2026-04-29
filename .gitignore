@@ -8,6 +8,7 @@ coverage/
 .next-dev.*
 .env
 .env.local
+.env*.local
 .env.*.local
 !.env.example
 package-lock.json.bak

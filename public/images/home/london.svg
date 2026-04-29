@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="London skyline">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ea893"/>
+      <stop offset=".55" stop-color="#355f48"/>
+      <stop offset="1" stop-color="#172f24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <path d="M0 560c165-48 274-24 409 13 152 41 277 32 421-29 139-59 254-63 370-22v278H0z" fill="#0d241a" opacity=".9"/>
+  <path d="M140 405h112v251H140zM170 318h52v87h-52zM295 360h88v296h-88zM421 445h118v211H421zM584 292h86v364h-86zM612 230h30v62h-30zM720 398h130v258H720zM914 338h106v318H914z" fill="#f5ead4" opacity=".23"/>
+  <path d="M585 264c80 8 155 37 222 88" fill="none" stroke="#d8bd68" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="925" cy="190" r="72" fill="#f0d17a" opacity=".34"/>
+</svg>

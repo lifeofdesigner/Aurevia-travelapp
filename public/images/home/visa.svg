@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Visa travel documents">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#edf3ef"/>
+      <stop offset=".62" stop-color="#7a9a85"/>
+      <stop offset="1" stop-color="#1c3d2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="248" y="170" width="380" height="500" rx="24" fill="#f6f0e5" opacity=".95"/>
+  <rect x="320" y="240" width="236" height="24" rx="12" fill="#1c3d2e" opacity=".28"/>
+  <rect x="320" y="300" width="166" height="18" rx="9" fill="#1c3d2e" opacity=".2"/>
+  <rect x="320" y="345" width="236" height="18" rx="9" fill="#1c3d2e" opacity=".2"/>
+  <circle cx="438" cy="476" r="88" fill="#d4b452" opacity=".55"/>
+  <rect x="570" y="238" width="348" height="468" rx="28" fill="#1c3d2e" opacity=".86"/>
+  <path d="M650 342h188M650 404h188M650 466h120" stroke="#f6f0e5" stroke-width="20" stroke-linecap="round" opacity=".55"/>
+  <circle cx="828" cy="584" r="62" fill="#d4b452" opacity=".9"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Dubai skyline">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d4b452"/>
+      <stop offset=".45" stop-color="#557864"/>
+      <stop offset="1" stop-color="#153426"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <path d="M0 620c193-78 354-81 515-24 153 55 297 60 433 12 93-33 176-45 252-23v215H0z" fill="#10281e" opacity=".9"/>
+  <path d="M184 452h128v232H184zM376 379h96v305h-96zM559 182h74v502h-74zM590 82l28 100h-56zM700 318h112v366H700zM876 420h144v264H876z" fill="#fff5df" opacity=".22"/>
+  <path d="M140 684h920" stroke="#d8bd68" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+  <circle cx="219" cy="183" r="80" fill="#fff0b0" opacity=".26"/>
+</svg>

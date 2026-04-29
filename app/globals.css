@@ -4,26 +4,78 @@
 
 @layer base {
   :root {
-    --background: 42 30% 98%;
-    --foreground: 218 30% 12%;
+    --background: 38 41% 95%;
+    --foreground: 153 37% 17%;
+    --foreground-soft: 143 16% 39%;
     --card: 0 0% 100%;
-    --card-foreground: 218 30% 12%;
+    --card-foreground: 153 37% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 218 30% 12%;
-    --primary: 178 58% 21%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 262 18% 94%;
-    --secondary-foreground: 262 25% 18%;
-    --muted: 214 22% 94%;
-    --muted-foreground: 218 12% 38%;
-    --accent: 37 72% 49%;
-    --accent-foreground: 32 45% 14%;
+    --popover-foreground: 153 37% 17%;
+    --primary: 153 37% 17%;
+    --primary-light: 148 36% 26%;
+    --primary-dark: 145 26% 9%;
+    --primary-foreground: 41 39% 94%;
+    --secondary: 39 36% 91%;
+    --secondary-foreground: 153 37% 17%;
+    --muted: 39 36% 91%;
+    --muted-foreground: 140 17% 54%;
+    --accent: 44 53% 54%;
+    --accent-foreground: 153 37% 17%;
     --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 100%;
-    --border: 216 20% 86%;
-    --input: 216 20% 86%;
-    --ring: 178 58% 28%;
+    --border: 38 36% 86%;
+    --input: 38 36% 86%;
+    --ring: 44 53% 54%;
+    --brand-ivory: 41 39% 94%;
     --radius: 0.5rem;
+  }
+
+  [data-site-theme="atlantic_blue"] {
+    --background: 210 33% 97%;
+    --foreground: 212 61% 20%;
+    --foreground-soft: 205 24% 40%;
+    --card: 0 0% 100%;
+    --card-foreground: 212 61% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 212 61% 20%;
+    --primary: 210 61% 23%;
+    --primary-light: 200 49% 36%;
+    --primary-dark: 216 48% 13%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 205 42% 92%;
+    --secondary-foreground: 212 61% 20%;
+    --muted: 205 42% 92%;
+    --muted-foreground: 204 20% 44%;
+    --accent: 43 64% 58%;
+    --accent-foreground: 216 48% 13%;
+    --border: 208 32% 85%;
+    --input: 208 32% 85%;
+    --ring: 43 64% 58%;
+    --brand-ivory: 210 40% 98%;
+  }
+
+  [data-site-theme="graphite_sky"] {
+    --background: 42 26% 96%;
+    --foreground: 215 18% 18%;
+    --foreground-soft: 200 12% 43%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 18% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 18% 18%;
+    --primary: 215 18% 18%;
+    --primary-light: 205 18% 36%;
+    --primary-dark: 218 22% 10%;
+    --primary-foreground: 45 28% 96%;
+    --secondary: 40 23% 91%;
+    --secondary-foreground: 215 18% 18%;
+    --muted: 40 23% 91%;
+    --muted-foreground: 200 12% 43%;
+    --accent: 188 49% 62%;
+    --accent-foreground: 45 28% 96%;
+    --border: 38 24% 84%;
+    --input: 38 24% 84%;
+    --ring: 188 49% 36%;
+    --brand-ivory: 45 28% 96%;
   }
 
   * {
@@ -36,7 +88,20 @@
 
   body {
     @apply min-h-screen bg-background text-foreground antialiased;
+    background-color: hsl(var(--background));
+    background-image: none;
     text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display), Arial, sans-serif;
+    font-style: normal;
+    font-weight: 600;
   }
 
   a {
@@ -52,12 +117,118 @@
   }
 }
 
+@layer utilities {
+  .font-display {
+    font-style: normal !important;
+    letter-spacing: 0;
+  }
+}
+
 @layer components {
   .aurevia-surface {
-    @apply border border-border bg-card text-card-foreground shadow-soft;
+    @apply border border-border/80 bg-card/90 text-card-foreground shadow-soft backdrop-blur;
   }
 
   .aurevia-section {
     @apply container py-12 sm:py-16 lg:py-20;
+  }
+
+  .aurevia-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-position: center;
+    background-size: 2.75rem 2.75rem;
+  }
+}
+
+@layer utilities {
+  [data-site-theme] .bg-\[\#1c3d2e\] {
+    background-color: hsl(var(--primary)) !important;
+  }
+
+  [data-site-theme] .bg-\[\#2a5a40\] {
+    background-color: hsl(var(--primary-light)) !important;
+  }
+
+  [data-site-theme] .bg-\[\#111d15\] {
+    background-color: hsl(var(--primary-dark)) !important;
+  }
+
+  [data-site-theme] .bg-\[\#f7f3ec\],
+  [data-site-theme] .bg-\[\#faf7f1\] {
+    background-color: hsl(var(--background)) !important;
+  }
+
+  [data-site-theme] .bg-\[\#f0ebe0\] {
+    background-color: hsl(var(--secondary)) !important;
+  }
+
+  [data-site-theme] .bg-\[\#f5f0e8\] {
+    background-color: hsl(var(--primary-foreground)) !important;
+  }
+
+  [data-site-theme] .bg-\[\#c9a84c\],
+  [data-site-theme] .bg-\[\#d5b45b\],
+  [data-site-theme] .bg-\[\#d6b864\],
+  [data-site-theme] .bg-\[\#b99536\] {
+    background-color: hsl(var(--accent)) !important;
+  }
+
+  [data-site-theme] .text-\[\#1c3d2e\] {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  [data-site-theme] .text-\[\#2a5a40\],
+  [data-site-theme] .text-\[\#4c6655\],
+  [data-site-theme] .text-\[\#56705f\],
+  [data-site-theme] .text-\[\#5d7364\] {
+    color: hsl(var(--foreground-soft)) !important;
+  }
+
+  [data-site-theme] .text-\[\#7a9a85\] {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  [data-site-theme] .text-\[\#c9a84c\] {
+    color: hsl(var(--accent)) !important;
+  }
+
+  [data-site-theme] .text-\[\#e8dfc8\],
+  [data-site-theme] .text-\[\#f5f0e8\] {
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  [data-site-theme] .border-\[\#1b2a20\],
+  [data-site-theme] .border-\[\#e8e0d0\] {
+    border-color: hsl(var(--border)) !important;
+  }
+
+  [data-site-theme] .border-\[\#c9a84c\],
+  [data-site-theme] .hover\:border-\[\#c9a84c\]:hover {
+    border-color: hsl(var(--accent)) !important;
+  }
+
+  [data-site-theme] .hover\:bg-\[\#111d15\]:hover {
+    background-color: hsl(var(--primary-dark)) !important;
+  }
+
+  [data-site-theme] .hover\:bg-\[\#2a5a40\]:hover,
+  [data-site-theme] .hover\:bg-\[\#1f4633\]:hover {
+    background-color: hsl(var(--primary-light)) !important;
+  }
+
+  [data-site-theme] .hover\:bg-\[\#d5b45b\]:hover,
+  [data-site-theme] .hover\:bg-\[\#d6b864\]:hover,
+  [data-site-theme] .hover\:bg-\[\#b99536\]:hover {
+    background-color: hsl(var(--accent) / 0.88) !important;
+  }
+
+  [data-site-theme] .hover\:text-\[\#1c3d2e\]:hover {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  [data-site-theme] .hover\:text-\[\#c9a84c\]:hover {
+    color: hsl(var(--accent)) !important;
   }
 }
