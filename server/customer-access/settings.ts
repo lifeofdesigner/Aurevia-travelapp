@@ -47,21 +47,30 @@ export function normalizeCustomerAccessSettings(value: Json | null | undefined):
 }
 
 export async function getCustomerAccessSettings(): Promise<AdminAccessSettings> {
-  const admin = createSupabaseAdminClient();
-  const result = await admin
-    .from("site_settings")
-    .select("setting_value")
-    .eq("setting_key", CUSTOMER_ACCESS_SETTINGS_KEY)
-    .is("locale", null)
-    .maybeSingle();
+  try {
+    const admin = createSupabaseAdminClient();
+    const result = await admin
+      .from("site_settings")
+      .select("setting_value")
+      .eq("setting_key", CUSTOMER_ACCESS_SETTINGS_KEY)
+      .is("locale", null)
+      .maybeSingle();
 
-  if (result.error) {
-    throw new Error(result.error.message);
+    if (result.error) {
+      console.warn(
+        "Customer access settings unavailable. Using defaults.",
+        result.error
+      );
+      return getDefaultCustomerAccessSettings();
+    }
+
+    return normalizeCustomerAccessSettings(
+      (result.data as {setting_value: Json} | null)?.setting_value
+    );
+  } catch (error) {
+    console.warn("Customer access settings unavailable. Using defaults.", error);
+    return getDefaultCustomerAccessSettings();
   }
-
-  return normalizeCustomerAccessSettings(
-    (result.data as {setting_value: Json} | null)?.setting_value
-  );
 }
 
 function getUserPhoneConfirmedAt(user: {phone_confirmed_at?: string | null}) {

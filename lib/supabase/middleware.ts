@@ -8,32 +8,36 @@ export async function refreshSupabaseSession(
   response: NextResponse,
   cookieName?: string
 ) {
-  const {key, url} = getSupabasePublicConfig();
-  const supabase = createServerClient(url, key, {
-    cookieOptions: cookieName
-      ? {
-          name: cookieName
+  try {
+    const {key, url} = getSupabasePublicConfig();
+    const supabase = createServerClient(url, key, {
+      cookieOptions: cookieName
+        ? {
+            name: cookieName
+          }
+        : undefined,
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll(cookiesToSet, headers) {
+          cookiesToSet.forEach(({name, value}) => {
+            request.cookies.set(name, value);
+          });
+
+          cookiesToSet.forEach(({name, value, options}) => {
+            response.cookies.set(name, value, options);
+          });
+
+          Object.entries(headers).forEach(([headerName, headerValue]) => {
+            response.headers.set(headerName, headerValue);
+          });
         }
-      : undefined,
-    cookies: {
-      getAll() {
-        return request.cookies.getAll();
-      },
-      setAll(cookiesToSet, headers) {
-        cookiesToSet.forEach(({name, value}) => {
-          request.cookies.set(name, value);
-        });
-
-        cookiesToSet.forEach(({name, value, options}) => {
-          response.cookies.set(name, value, options);
-        });
-
-        Object.entries(headers).forEach(([headerName, headerValue]) => {
-          response.headers.set(headerName, headerValue);
-        });
       }
-    }
-  });
+    });
 
-  await supabase.auth.getUser();
+    await supabase.auth.getUser();
+  } catch (error) {
+    console.warn("Supabase session refresh unavailable.", error);
+  }
 }
