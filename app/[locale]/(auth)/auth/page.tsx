@@ -7,7 +7,7 @@ import {Button} from "@/components/ui/button";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {type Locale} from "@/lib/i18n/routing";
 import {getLocalizedPath, ROUTES} from "@/lib/routes";
-import {getCustomerAccessSettings} from "@/server/customer-access/settings";
+import {getDefaultCustomerAccessSettings} from "@/server/customer-access/settings";
 
 type AuthPageProps = {
   params: {
@@ -23,7 +23,7 @@ export default async function AuthPage({params, searchParams}: AuthPageProps) {
     typeof nextParam === "string" && nextParam.startsWith("/")
       ? nextParam
       : getLocalizedPath(ROUTES.dashboard, params.locale);
-  const accessSettings = await getCustomerAccessSettings();
+  const accessSettings = getDefaultCustomerAccessSettings();
 
   return (
     <main
