@@ -166,7 +166,7 @@ export function AdminSidebar({role}: AdminSidebarProps) {
   return (
     <nav
       aria-label="Admin navigation"
-      className="rounded-lg border border-[#1b2a20] bg-[#111d15] p-3 text-[#e8dfc8] shadow-[0_18px_40px_rgba(17,29,21,0.22)]"
+      className="rounded-lg border border-border bg-card p-3 text-card-foreground shadow-soft"
     >
       <div className="space-y-5">
         {sidebarGroups.map((group) => {
@@ -178,7 +178,7 @@ export function AdminSidebar({role}: AdminSidebarProps) {
 
           return (
             <div key={group.title} className="space-y-2">
-              <p className="hidden px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-[#555] xl:block">
+              <p className="hidden px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground/60 xl:block">
                 {group.title}
               </p>
               <div className="space-y-1">
@@ -194,16 +194,16 @@ export function AdminSidebar({role}: AdminSidebarProps) {
                       key={item.href}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "flex min-h-[48px] items-center rounded-md border-l-2 px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111d15] xl:gap-3",
+                        "flex min-h-[48px] items-center rounded-md border-l-2 px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card xl:gap-3",
                         isActive
-                          ? "border-l-[#c9a84c] bg-[rgba(201,168,76,0.08)] text-[#e8dfc8]"
-                          : "border-l-transparent text-[rgba(232,223,200,0.62)] hover:bg-white/5 hover:text-[#e8dfc8]"
+                          ? "border-l-primary bg-primary/10 text-primary"
+                          : "border-l-transparent text-muted-foreground hover:bg-muted hover:text-foreground"
                       )}
                       href={href}
                       title={item.label}
                     >
                       <span className="flex w-full items-center justify-center xl:w-auto xl:justify-start">
-                        <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-[#c9a84c]" />
+                        <Icon aria-hidden="true" className="h-4 w-4 shrink-0" />
                       </span>
                       <span className="hidden xl:inline">{item.label}</span>
                     </Link>

@@ -24,7 +24,7 @@ function AdminLoginSubmitButton() {
 
   return (
     <Button
-      className="h-11 w-full rounded-lg bg-[#1c3d2e] text-white hover:bg-[#2a5a40]"
+      className="h-11 w-full rounded-lg bg-primary text-primary-foreground hover:bg-primary-dark"
       disabled={pending}
     >
       {pending ? "Signing in..." : "Sign in to Admin"}
@@ -146,21 +146,21 @@ export function AdminLoginForm() {
     return (
       <form className="space-y-5" noValidate onSubmit={handlePasswordReset}>
         <div className="space-y-1">
-          <h2 className="text-xl font-semibold text-[#1c3d2e]">Reset admin password</h2>
-          <p className="text-sm leading-6 text-[#5d7364]">
+          <h2 className="text-xl font-semibold text-foreground">Reset admin password</h2>
+          <p className="text-sm leading-6 text-muted-foreground">
             Set a new password for your admin account, then sign in again to continue.
           </p>
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm text-[#1c3d2e]" htmlFor="admin-recovery-password">
+          <Label className="text-sm text-foreground" htmlFor="admin-recovery-password">
             New password
           </Label>
           <Input
             id="admin-recovery-password"
             type={showPassword ? "text" : "password"}
             autoComplete="new-password"
-            className="h-11 rounded-lg border-[#e8e0d0] bg-white text-[#1c3d2e] placeholder:text-[#7a9a85]"
+            className="h-11 rounded-lg border-input bg-card text-foreground placeholder:text-muted-foreground"
             onChange={(event) => setRecoveryPassword(event.target.value)}
             placeholder="Enter a new password"
             value={recoveryPassword}
@@ -168,7 +168,7 @@ export function AdminLoginForm() {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm text-[#1c3d2e]" htmlFor="admin-recovery-confirm-password">
+          <Label className="text-sm text-foreground" htmlFor="admin-recovery-confirm-password">
             Confirm password
           </Label>
           <div className="relative">
@@ -176,7 +176,7 @@ export function AdminLoginForm() {
               id="admin-recovery-confirm-password"
               type={showPassword ? "text" : "password"}
               autoComplete="new-password"
-              className="h-11 rounded-lg border-[#e8e0d0] bg-white pr-12 text-[#1c3d2e] placeholder:text-[#7a9a85]"
+              className="h-11 rounded-lg border-input bg-card pr-12 text-foreground placeholder:text-muted-foreground"
               onChange={(event) => setConfirmPassword(event.target.value)}
               placeholder="Confirm the new password"
               value={confirmPassword}
@@ -184,7 +184,7 @@ export function AdminLoginForm() {
             <button
               type="button"
               aria-label={showPassword ? "Hide password" : "Show password"}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7a9a85] transition-colors hover:text-[#1c3d2e]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setShowPassword((current) => !current)}
             >
               {showPassword ? (
@@ -197,13 +197,13 @@ export function AdminLoginForm() {
         </div>
 
         {recoveryError ? (
-          <p className="rounded-lg border border-[#f1c3c3] bg-[#fff4f4] px-4 py-3 text-sm text-[#9f1d1d]">
+          <p className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
             {recoveryError}
           </p>
         ) : null}
 
         <Button
-          className="h-11 w-full rounded-lg bg-[#1c3d2e] text-white hover:bg-[#2a5a40]"
+          className="h-11 w-full rounded-lg bg-primary text-primary-foreground hover:bg-primary-dark"
           disabled={isRecoveryPending}
           type="submit"
         >
@@ -216,13 +216,13 @@ export function AdminLoginForm() {
   return (
     <form action={formAction} className="space-y-5" noValidate>
       {resetState === "success" || recoverySuccessMessage ? (
-        <p className="rounded-lg border border-[#d9e6db] bg-[#f4faf5] px-4 py-3 text-sm text-[#1c3d2e]">
+        <p className="rounded-lg border border-border bg-muted px-4 py-3 text-sm text-foreground">
           {recoverySuccessMessage ?? "Password updated. Sign in with your new admin password."}
         </p>
       ) : null}
 
       <div className="space-y-2">
-        <Label className="text-sm text-[#1c3d2e]" htmlFor="admin-email">
+        <Label className="text-sm text-foreground" htmlFor="admin-email">
           Email
         </Label>
         <Input
@@ -230,13 +230,13 @@ export function AdminLoginForm() {
           name="email"
           type="email"
           autoComplete="email"
-          className="h-11 rounded-lg border-[#e8e0d0] bg-white text-[#1c3d2e] placeholder:text-[#7a9a85]"
+          className="h-11 rounded-lg border-input bg-card text-foreground placeholder:text-muted-foreground"
           placeholder="admin@aurevia.travel"
         />
       </div>
 
       <div className="space-y-2">
-        <Label className="text-sm text-[#1c3d2e]" htmlFor="admin-password">
+        <Label className="text-sm text-foreground" htmlFor="admin-password">
           Password
         </Label>
         <div className="relative">
@@ -245,13 +245,13 @@ export function AdminLoginForm() {
             name="password"
             type={showPassword ? "text" : "password"}
             autoComplete="current-password"
-            className="h-11 rounded-lg border-[#e8e0d0] bg-white pr-12 text-[#1c3d2e] placeholder:text-[#7a9a85]"
+            className="h-11 rounded-lg border-input bg-card pr-12 text-foreground placeholder:text-muted-foreground"
             placeholder="Enter your password"
           />
           <button
             type="button"
             aria-label={showPassword ? "Hide password" : "Show password"}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7a9a85] transition-colors hover:text-[#1c3d2e]"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
             onClick={() => setShowPassword((current) => !current)}
           >
             {showPassword ? (
@@ -264,7 +264,7 @@ export function AdminLoginForm() {
       </div>
 
       {state.error ? (
-        <p className="rounded-lg border border-[#f1c3c3] bg-[#fff4f4] px-4 py-3 text-sm text-[#9f1d1d]">
+        <p className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
           {state.error}
         </p>
       ) : null}
@@ -274,16 +274,16 @@ export function AdminLoginForm() {
       <div className="flex items-center justify-between gap-3 text-sm">
         <Link
           href="/admin-login/forgot-password"
-          className="text-[#7a9a85] no-underline transition-colors hover:text-[#1c3d2e]"
+          className="text-muted-foreground no-underline transition-colors hover:text-foreground"
         >
           Forgot password
         </Link>
       </div>
 
-      <div className="border-t border-[#e8e0d0] pt-5 text-center">
+      <div className="border-t border-border pt-5 text-center">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-[#7a9a85] no-underline transition-colors hover:text-[#1c3d2e]"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground"
         >
           Customer portal
           <ArrowRight aria-hidden="true" className="h-4 w-4" />

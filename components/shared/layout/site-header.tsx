@@ -112,7 +112,7 @@ function HeaderAccountMenu({
         type="button"
         aria-expanded={isOpen}
         aria-haspopup="menu"
-        className="inline-flex h-8 max-w-[13rem] items-center gap-2 rounded-[3px] border border-[rgba(232,223,200,0.16)] px-3 text-[12px] font-semibold text-[#e8dfc8] transition-colors hover:border-[rgba(201,168,76,0.5)] hover:text-[#c9a84c]"
+        className="inline-flex h-8 max-w-[13rem] items-center gap-2 rounded-[3px] border border-border px-3 text-[12px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
         onClick={() => setIsOpen((open) => !open)}
       >
         <UserRound aria-hidden="true" className="h-3.5 w-3.5 flex-none" />
@@ -129,13 +129,13 @@ function HeaderAccountMenu({
       {isOpen ? (
         <div
           role="menu"
-          className="absolute right-0 top-[calc(100%+0.55rem)] z-[70] w-72 rounded-[6px] border border-[#e4d7bd] bg-[#fffaf0] p-2 text-[#123d2d] shadow-2xl"
+          className="absolute right-0 top-[calc(100%+0.55rem)] z-[70] w-72 rounded-[6px] border border-border bg-card p-2 text-card-foreground shadow-2xl"
         >
-          <div className="border-b border-[#eadfc9] px-3 py-2.5">
+          <div className="border-b border-border px-3 py-2.5">
             <p className="truncate text-[13px] font-semibold">
               {account.displayName}
             </p>
-            <p className="mt-1 truncate text-[11px] text-[#6f8f7a]">
+            <p className="mt-1 truncate text-[11px] text-muted-foreground">
               {account.email}
             </p>
           </div>
@@ -143,7 +143,7 @@ function HeaderAccountMenu({
           <Link
             href={dashboardHref}
             role="menuitem"
-            className="mt-2 flex min-h-10 items-center gap-2 rounded-[4px] px-3 text-[12px] font-semibold text-[#123d2d] no-underline transition-colors hover:bg-[#f4ead8]"
+            className="mt-2 flex min-h-10 items-center gap-2 rounded-[4px] px-3 text-[12px] font-semibold text-card-foreground no-underline transition-colors hover:bg-muted"
             onClick={() => setIsOpen(false)}
           >
             <LayoutDashboard aria-hidden="true" className="h-4 w-4" />
@@ -152,7 +152,7 @@ function HeaderAccountMenu({
           <Link
             href={profileHref}
             role="menuitem"
-            className="flex min-h-10 items-center gap-2 rounded-[4px] px-3 text-[12px] font-semibold text-[#123d2d] no-underline transition-colors hover:bg-[#f4ead8]"
+            className="flex min-h-10 items-center gap-2 rounded-[4px] px-3 text-[12px] font-semibold text-card-foreground no-underline transition-colors hover:bg-muted"
             onClick={() => setIsOpen(false)}
           >
             <UserRound aria-hidden="true" className="h-4 w-4" />
@@ -161,7 +161,7 @@ function HeaderAccountMenu({
           <button
             type="button"
             role="menuitem"
-            className="flex min-h-10 w-full items-center gap-2 rounded-[4px] px-3 text-left text-[12px] font-semibold text-[#8a2c24] transition-colors hover:bg-[#f7e7df] disabled:cursor-wait disabled:opacity-60"
+            className="flex min-h-10 w-full items-center gap-2 rounded-[4px] px-3 text-left text-[12px] font-semibold text-destructive transition-colors hover:bg-destructive/10 disabled:cursor-wait disabled:opacity-60"
             disabled={isSigningOut}
             onClick={handleSignOut}
           >
@@ -210,9 +210,9 @@ export function SiteHeader({
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 bg-[#1c3d2e] text-[#e8dfc8]",
+        "sticky top-0 z-50 bg-card text-foreground",
         hasScrolled
-          ? "border-b border-[rgba(232,223,200,0.1)]"
+          ? "border-b border-border shadow-sm"
           : "border-b border-transparent"
       )}
     >
@@ -232,10 +232,10 @@ export function SiteHeader({
             />
           ) : (
             <>
-              <span className="font-display text-[20px] leading-none text-[#e8dfc8]">
+              <span className="font-display text-[20px] leading-none text-foreground">
                 {splitBrandName(branding.siteName).first}
               </span>
-              <span className="font-display text-[20px] leading-none text-[#c9a84c]">
+              <span className="font-display text-[20px] leading-none text-primary">
                 {splitBrandName(branding.siteName).rest}
               </span>
             </>
@@ -254,8 +254,8 @@ export function SiteHeader({
               className={cn(
                 "text-[11px] font-semibold uppercase tracking-[0.08em] no-underline transition-colors",
                 link.isActive
-                  ? "text-[#c9a84c]"
-                  : "text-[rgba(232,223,200,0.55)] hover:text-[#e8dfc8]"
+                  ? "text-primary"
+                  : "text-foreground/50 hover:text-foreground"
               )}
             >
               {link.label}
@@ -275,14 +275,14 @@ export function SiteHeader({
           ) : showSignInLink ? (
             <Link
               href={signInHref}
-              className="text-[12px] font-medium text-[rgba(232,223,200,0.82)] no-underline transition-colors hover:text-[#e8dfc8]"
+              className="text-[12px] font-medium text-muted-foreground no-underline transition-colors hover:text-foreground"
             >
               Sign in
             </Link>
           ) : null}
           <Link
             href={primaryCtaHref}
-            className="inline-flex h-8 items-center justify-center rounded-[3px] bg-[#c9a84c] px-3.5 text-[10px] font-bold uppercase tracking-[0.08em] text-[#1c3d2e] no-underline transition-colors hover:bg-[#d6b864]"
+            className="inline-flex h-8 items-center justify-center rounded-[3px] bg-primary px-3.5 text-[10px] font-bold uppercase tracking-[0.08em] text-primary-foreground no-underline transition-colors hover:bg-primary-dark"
           >
             Plan Journey
           </Link>

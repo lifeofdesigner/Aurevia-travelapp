@@ -17,28 +17,28 @@ export const SITE_THEME_OPTIONS: Array<{
   surfaceHex: string;
 }> = [
   {
-    accentHex: "#c9a84c",
-    description: "Deep green, warm ivory, and restrained gold for executive travel brands.",
+    accentHex: "#2563eb",
+    description: "Clean white surfaces with confident blue accents for corporate travel brands.",
     key: "executive_emerald",
-    label: "Executive Emerald",
-    primaryHex: "#1c3d2e",
-    surfaceHex: "#f7f3ec"
+    label: "Corporate Blue",
+    primaryHex: "#2563eb",
+    surfaceHex: "#f8fafc"
   },
   {
-    accentHex: "#d7b04f",
-    description: "Corporate navy with sky-blue lift and gold action states for airline commerce.",
+    accentHex: "#1e4da1",
+    description: "Deeper navy blue with crisp white surfaces for airline commerce.",
     key: "atlantic_blue",
-    label: "Atlantic Blue",
-    primaryHex: "#173a5e",
-    surfaceHex: "#f5f8fb"
+    label: "Atlantic Navy",
+    primaryHex: "#1e4da1",
+    surfaceHex: "#f8fafc"
   },
   {
-    accentHex: "#65bdc8",
-    description: "Graphite, platinum, and teal for a quieter premium operations feel.",
+    accentHex: "#3b9ed8",
+    description: "Charcoal and slate with teal highlights for a quieter premium feel.",
     key: "graphite_sky",
     label: "Graphite Sky",
-    primaryHex: "#262d35",
-    surfaceHex: "#f7f6f2"
+    primaryHex: "#2d3748",
+    surfaceHex: "#f9fafb"
   }
 ];
 

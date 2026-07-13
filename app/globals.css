@@ -4,78 +4,85 @@
 
 @layer base {
   :root {
-    --background: 38 41% 95%;
-    --foreground: 153 37% 17%;
-    --foreground-soft: 143 16% 39%;
+    /* Corporate White/Blue — default (executive_emerald) */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --foreground-soft: 215 20% 40%;
     --card: 0 0% 100%;
-    --card-foreground: 153 37% 17%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 153 37% 17%;
-    --primary: 153 37% 17%;
-    --primary-light: 148 36% 26%;
-    --primary-dark: 145 26% 9%;
-    --primary-foreground: 41 39% 94%;
-    --secondary: 39 36% 91%;
-    --secondary-foreground: 153 37% 17%;
-    --muted: 39 36% 91%;
-    --muted-foreground: 140 17% 54%;
-    --accent: 44 53% 54%;
-    --accent-foreground: 153 37% 17%;
-    --destructive: 0 72% 48%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-light: 217 91% 60%;
+    --primary-dark: 224 76% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 221 83% 53%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 38 36% 86%;
-    --input: 38 36% 86%;
-    --ring: 44 53% 54%;
-    --brand-ivory: 41 39% 94%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --brand-ivory: 210 40% 98%;
     --radius: 0.5rem;
   }
 
   [data-site-theme="atlantic_blue"] {
-    --background: 210 33% 97%;
-    --foreground: 212 61% 20%;
-    --foreground-soft: 205 24% 40%;
+    /* Corporate Navy — deeper blue variant */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --foreground-soft: 215 20% 40%;
     --card: 0 0% 100%;
-    --card-foreground: 212 61% 20%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 212 61% 20%;
-    --primary: 210 61% 23%;
-    --primary-light: 200 49% 36%;
-    --primary-dark: 216 48% 13%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 205 42% 92%;
-    --secondary-foreground: 212 61% 20%;
-    --muted: 205 42% 92%;
-    --muted-foreground: 204 20% 44%;
-    --accent: 43 64% 58%;
-    --accent-foreground: 216 48% 13%;
-    --border: 208 32% 85%;
-    --input: 208 32% 85%;
-    --ring: 43 64% 58%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 71% 47%;
+    --primary-light: 217 91% 60%;
+    --primary-dark: 221 83% 38%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 217 71% 47%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 71% 47%;
     --brand-ivory: 210 40% 98%;
   }
 
   [data-site-theme="graphite_sky"] {
-    --background: 42 26% 96%;
-    --foreground: 215 18% 18%;
-    --foreground-soft: 200 12% 43%;
+    /* Corporate Slate — charcoal/neutral variant */
+    --background: 210 17% 98%;
+    --foreground: 215 25% 15%;
+    --foreground-soft: 215 16% 40%;
     --card: 0 0% 100%;
-    --card-foreground: 215 18% 18%;
+    --card-foreground: 215 25% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 18% 18%;
-    --primary: 215 18% 18%;
-    --primary-light: 205 18% 36%;
-    --primary-dark: 218 22% 10%;
-    --primary-foreground: 45 28% 96%;
-    --secondary: 40 23% 91%;
-    --secondary-foreground: 215 18% 18%;
-    --muted: 40 23% 91%;
-    --muted-foreground: 200 12% 43%;
-    --accent: 188 49% 62%;
-    --accent-foreground: 45 28% 96%;
-    --border: 38 24% 84%;
-    --input: 38 24% 84%;
-    --ring: 188 49% 36%;
-    --brand-ivory: 45 28% 96%;
+    --popover-foreground: 215 25% 15%;
+    --primary: 215 25% 27%;
+    --primary-light: 215 20% 40%;
+    --primary-dark: 215 30% 18%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 92%;
+    --secondary-foreground: 215 25% 15%;
+    --muted: 210 20% 92%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 200 60% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 215 25% 27%;
+    --brand-ivory: 210 17% 98%;
   }
 
   * {
@@ -113,7 +120,7 @@
   }
 
   ::selection {
-    background: hsl(var(--accent) / 0.35);
+    background: hsl(var(--primary) / 0.15);
   }
 }
 
@@ -140,21 +147,113 @@
     background-position: center;
     background-size: 2.75rem 2.75rem;
   }
+
+  .global-interaction-feedback {
+    @apply pointer-events-none fixed inset-x-0 top-0 z-[120] opacity-0 transition-opacity duration-150;
+  }
+
+  .global-interaction-feedback[data-visible="true"] {
+    @apply opacity-100;
+  }
+
+  .global-interaction-feedback__bar {
+    @apply h-1.5 w-full origin-left bg-primary shadow-[0_0_22px_hsl(var(--primary)/0.5)];
+    animation: aurevia-progress-bar 1.15s ease-in-out infinite;
+  }
+
+  .global-interaction-feedback__pill {
+    @apply absolute left-1/2 top-4 hidden -translate-x-1/2 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2 text-sm font-semibold text-card-foreground opacity-0 shadow-2xl backdrop-blur transition-opacity duration-150;
+  }
+
+  .global-interaction-feedback__pill[data-visible="true"] {
+    @apply flex opacity-100;
+  }
+
+  .global-interaction-feedback__spinner {
+    @apply h-3.5 w-3.5 rounded-full border-2 border-primary/30 border-t-primary;
+    animation: aurevia-spin 0.75s linear infinite;
+  }
 }
 
+@keyframes aurevia-progress-bar {
+  0% {
+    transform: scaleX(0.08);
+  }
+
+  45% {
+    transform: scaleX(0.68);
+  }
+
+  100% {
+    transform: scaleX(0.96);
+  }
+}
+
+@keyframes aurevia-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+html[data-global-interaction-pending] {
+  cursor: progress;
+}
+
+html[data-global-interaction-pending] a,
+html[data-global-interaction-pending] button,
+html[data-global-interaction-pending] [role="button"] {
+  cursor: progress;
+}
+
+[data-interaction-pending="true"] {
+  box-shadow:
+    0 0 0 3px hsl(var(--primary) / 0.25),
+    0 8px 20px hsl(var(--primary) / 0.16);
+  cursor: progress !important;
+  filter: brightness(0.94);
+  opacity: 0.82;
+  transform: translateY(1px) scale(0.99);
+  transition:
+    box-shadow 120ms ease,
+    filter 120ms ease,
+    opacity 120ms ease,
+    transform 120ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-interaction-feedback,
+  .global-interaction-feedback__pill {
+    transition-duration: 1ms;
+  }
+
+  .global-interaction-feedback__bar,
+  .global-interaction-feedback__spinner {
+    animation-duration: 1.8s;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Hardcoded-hex safety net — maps old green-era hex classes to the new blue
+   design tokens so any unmigrated components render correctly across all themes.
+   ──────────────────────────────────────────────────────────────────────────── */
 @layer utilities {
+  /* Primary backgrounds */
   [data-site-theme] .bg-\[\#1c3d2e\] {
     background-color: hsl(var(--primary)) !important;
   }
 
-  [data-site-theme] .bg-\[\#2a5a40\] {
+  [data-site-theme] .bg-\[\#2a5a40\],
+  [data-site-theme] .bg-\[\#1f4633\] {
     background-color: hsl(var(--primary-light)) !important;
   }
 
-  [data-site-theme] .bg-\[\#111d15\] {
+  [data-site-theme] .bg-\[\#111d15\],
+  [data-site-theme] .bg-\[\#1b2a20\],
+  [data-site-theme] .bg-\[\#315240\] {
     background-color: hsl(var(--primary-dark)) !important;
   }
 
+  /* Surface / secondary backgrounds */
   [data-site-theme] .bg-\[\#f7f3ec\],
   [data-site-theme] .bg-\[\#faf7f1\] {
     background-color: hsl(var(--background)) !important;
@@ -165,16 +264,25 @@
   }
 
   [data-site-theme] .bg-\[\#f5f0e8\] {
-    background-color: hsl(var(--primary-foreground)) !important;
+    background-color: hsl(var(--card)) !important;
   }
 
+  /* Success state backgrounds → neutral secondary */
+  [data-site-theme] .bg-\[\#f4faf5\] {
+    background-color: hsl(var(--secondary)) !important;
+  }
+
+  /* Accent / gold → primary blue */
   [data-site-theme] .bg-\[\#c9a84c\],
   [data-site-theme] .bg-\[\#d5b45b\],
   [data-site-theme] .bg-\[\#d6b864\],
-  [data-site-theme] .bg-\[\#b99536\] {
-    background-color: hsl(var(--accent)) !important;
+  [data-site-theme] .bg-\[\#b99536\],
+  [data-site-theme] .bg-\[\#d4b452\],
+  [data-site-theme] .bg-\[\#d8a55a\] {
+    background-color: hsl(var(--primary)) !important;
   }
 
+  /* Text — primary / dark foreground */
   [data-site-theme] .text-\[\#1c3d2e\] {
     color: hsl(var(--foreground)) !important;
   }
@@ -182,33 +290,52 @@
   [data-site-theme] .text-\[\#2a5a40\],
   [data-site-theme] .text-\[\#4c6655\],
   [data-site-theme] .text-\[\#56705f\],
-  [data-site-theme] .text-\[\#5d7364\] {
+  [data-site-theme] .text-\[\#5d7364\],
+  [data-site-theme] .text-\[\#315240\],
+  [data-site-theme] .text-\[\#6d5936\] {
     color: hsl(var(--foreground-soft)) !important;
   }
 
-  [data-site-theme] .text-\[\#7a9a85\] {
+  [data-site-theme] .text-\[\#7a9a85\],
+  [data-site-theme] .text-\[\#6f8f7a\] {
     color: hsl(var(--muted-foreground)) !important;
   }
 
-  [data-site-theme] .text-\[\#c9a84c\] {
-    color: hsl(var(--accent)) !important;
+  /* Accent text → primary blue */
+  [data-site-theme] .text-\[\#c9a84c\],
+  [data-site-theme] .text-\[\#b99536\],
+  [data-site-theme] .text-\[\#d5b45b\] {
+    color: hsl(var(--primary)) !important;
   }
 
+  /* Light text (was cream on dark) → foreground */
   [data-site-theme] .text-\[\#e8dfc8\],
-  [data-site-theme] .text-\[\#f5f0e8\] {
-    color: hsl(var(--primary-foreground)) !important;
+  [data-site-theme] .text-\[\#f5f0e8\],
+  [data-site-theme] .text-\[\#e8e0d0\] {
+    color: hsl(var(--foreground)) !important;
   }
 
+  /* Borders */
   [data-site-theme] .border-\[\#1b2a20\],
-  [data-site-theme] .border-\[\#e8e0d0\] {
+  [data-site-theme] .border-\[\#e8e0d0\],
+  [data-site-theme] .border-\[\#e4d7bd\],
+  [data-site-theme] .border-\[\#eadfc9\],
+  [data-site-theme] .border-\[\#ead9c8\],
+  [data-site-theme] .border-\[\#e8dfc8\] {
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Success border → neutral border */
+  [data-site-theme] .border-\[\#d9e6db\] {
     border-color: hsl(var(--border)) !important;
   }
 
   [data-site-theme] .border-\[\#c9a84c\],
   [data-site-theme] .hover\:border-\[\#c9a84c\]:hover {
-    border-color: hsl(var(--accent)) !important;
+    border-color: hsl(var(--primary)) !important;
   }
 
+  /* Hover backgrounds */
   [data-site-theme] .hover\:bg-\[\#111d15\]:hover {
     background-color: hsl(var(--primary-dark)) !important;
   }
@@ -221,14 +348,27 @@
   [data-site-theme] .hover\:bg-\[\#d5b45b\]:hover,
   [data-site-theme] .hover\:bg-\[\#d6b864\]:hover,
   [data-site-theme] .hover\:bg-\[\#b99536\]:hover {
-    background-color: hsl(var(--accent) / 0.88) !important;
+    background-color: hsl(var(--primary-dark)) !important;
   }
 
+  [data-site-theme] .hover\:bg-\[\#f4ead8\]:hover {
+    background-color: hsl(var(--muted)) !important;
+  }
+
+  [data-site-theme] .hover\:bg-\[\#f7e7df\]:hover {
+    background-color: hsl(var(--destructive) / 0.08) !important;
+  }
+
+  /* Hover text */
   [data-site-theme] .hover\:text-\[\#1c3d2e\]:hover {
     color: hsl(var(--foreground)) !important;
   }
 
   [data-site-theme] .hover\:text-\[\#c9a84c\]:hover {
-    color: hsl(var(--accent)) !important;
+    color: hsl(var(--primary)) !important;
+  }
+
+  [data-site-theme] .hover\:text-\[\#e8dfc8\]:hover {
+    color: hsl(var(--foreground)) !important;
   }
 }

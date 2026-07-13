@@ -48,14 +48,14 @@ export function AdminForgotPasswordForm() {
   return (
     <form className="space-y-5" noValidate onSubmit={handleSubmit}>
       <div className="space-y-2">
-        <Label className="text-sm text-[#1c3d2e]" htmlFor="admin-reset-email">
+        <Label className="text-sm text-foreground" htmlFor="admin-reset-email">
           Email
         </Label>
         <Input
           id="admin-reset-email"
           type="email"
           autoComplete="email"
-          className="h-11 rounded-lg border-[#e8e0d0] bg-white text-[#1c3d2e] placeholder:text-[#7a9a85]"
+          className="h-11 rounded-lg border-input bg-card text-foreground placeholder:text-muted-foreground"
           onChange={(event) => setEmail(event.target.value)}
           placeholder="admin@aurevia.travel"
           value={email}
@@ -63,29 +63,29 @@ export function AdminForgotPasswordForm() {
       </div>
 
       {error ? (
-        <p className="rounded-lg border border-[#f1c3c3] bg-[#fff4f4] px-4 py-3 text-sm text-[#9f1d1d]">
+        <p className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
           {error}
         </p>
       ) : null}
 
       {successMessage ? (
-        <p className="rounded-lg border border-[#d9e6db] bg-[#f4faf5] px-4 py-3 text-sm text-[#1c3d2e]">
+        <p className="rounded-lg border border-border bg-muted px-4 py-3 text-sm text-foreground">
           {successMessage}
         </p>
       ) : null}
 
       <Button
-        className="h-11 w-full rounded-lg bg-[#1c3d2e] text-white hover:bg-[#2a5a40]"
+        className="h-11 w-full rounded-lg bg-primary text-primary-foreground hover:bg-primary-dark"
         disabled={isPending}
         type="submit"
       >
         {isPending ? "Sending reset link..." : "Send reset link"}
       </Button>
 
-      <div className="border-t border-[#e8e0d0] pt-5 text-center">
+      <div className="border-t border-border pt-5 text-center">
         <Link
           href="/admin-login"
-          className="text-sm text-[#7a9a85] no-underline transition-colors hover:text-[#1c3d2e]"
+          className="text-sm text-muted-foreground no-underline transition-colors hover:text-foreground"
         >
           Back to admin sign in
         </Link>
