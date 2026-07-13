@@ -112,7 +112,107 @@ function buildLocalSuggestions(query: string) {
     .slice(0, 10);
 }
 
-async function buildDatabaseSuggestions(query: string) {
+/**
+ * Full-text search against the airports_openflights table (6,072 real airports seeded from
+ * OpenFlights dataset). Falls back gracefully if the table doesn't exist yet.
+ */
+async function buildOpenflightsSuggestions(query: string): Promise<AirportSearchSuggestion[]> {
+  const trimmed = query.trim();
+
+  if (trimmed.length < 2) {
+    return [];
+  }
+
+  const admin = createSupabaseAdminClient();
+
+  // For very short queries (2–3 chars that look like an IATA code) prefer prefix ilike;
+  // for longer queries use full-text search which handles partial city/airport names better.
+  const isCodeLike = /^[a-zA-Z]{2,3}$/.test(trimmed);
+  const tsQuery = trimmed
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => `${word}:*`)  // prefix matching in FTS
+    .join(" & ");
+
+  try {
+    if (isCodeLike) {
+      // Exact/prefix IATA code match first, then FTS for the rest
+      const [codeResult, ftsResult] = await Promise.all([
+        admin
+          .from("airports_openflights")
+          .select("iata_code, name, city, country")
+          .ilike("iata_code", `${trimmed.toUpperCase()}%`)
+          .limit(5),
+        tsQuery
+          ? admin
+              .from("airports_openflights")
+              .select("iata_code, name, city, country")
+              .textSearch("iata_code, name, city, country", tsQuery, {
+                type: "websearch",
+                config: "simple"
+              })
+              .limit(8)
+          : Promise.resolve({data: [], error: null})
+      ]);
+
+      if (codeResult.error && ftsResult.error) {
+        return [];
+      }
+
+      const rows = [
+        ...((codeResult.data ?? []) as Array<{iata_code: string; name: string; city: string | null; country: string}>),
+        ...((ftsResult.data ?? []) as Array<{iata_code: string; name: string; city: string | null; country: string}>)
+      ];
+
+      return rows.map((r) => ({
+        city: r.city ?? r.iata_code,
+        code: r.iata_code,
+        country: r.country,
+        name: r.name,
+        type: "airport"
+      }));
+    }
+
+    // Multi-word / city name query — use FTS
+    if (!tsQuery) {
+      return [];
+    }
+
+    const result = await admin
+      .from("airports_openflights")
+      .select("iata_code, name, city, country")
+      .textSearch("iata_code, name, city, country", tsQuery, {
+        type: "websearch",
+        config: "simple"
+      })
+      .limit(12);
+
+    if (result.error) {
+      // Table may not exist yet — fail silently
+      return [];
+    }
+
+    return ((result.data ?? []) as Array<{iata_code: string; name: string; city: string | null; country: string}>).map(
+      (r) => ({
+        city: r.city ?? r.iata_code,
+        code: r.iata_code,
+        country: r.country,
+        name: r.name,
+        type: "airport"
+      })
+    );
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Query the existing relational airports table (may be empty until seeded separately).
+ */
+async function buildDatabaseSuggestions(query: string): Promise<AirportSearchSuggestion[]> {
   const normalizedQuery = query.trim();
 
   if (normalizedQuery.length < 2) {
@@ -161,12 +261,18 @@ function dedupeSuggestions(suggestions: AirportSearchSuggestion[]) {
 
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams.get("q")?.trim() ?? "";
-  const [localSuggestions, databaseSuggestions] = await Promise.all([
+
+  const [localSuggestions, openflightsSuggestions, databaseSuggestions] = await Promise.all([
     Promise.resolve(buildLocalSuggestions(query)),
+    buildOpenflightsSuggestions(query),
     buildDatabaseSuggestions(query)
   ]);
+
+  // Merge: local catalog first (highest quality/curated), then openflights (broad coverage),
+  // then relational airports table, deduped by IATA code.
   const baseSuggestions = dedupeSuggestions([
     ...localSuggestions,
+    ...openflightsSuggestions,
     ...databaseSuggestions
   ]);
 
