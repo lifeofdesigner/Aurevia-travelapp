@@ -2803,7 +2803,7 @@ insert into airports_openflights (iata_code, icao_code, name, city, country, lat
 ('VAD', 'KVAD', 'Moody Air Force Base', 'Valdosta', 'United States', 30.9678001404, -83.1930007935, 233, 'America/New_York'),
 ('MIA', 'KMIA', 'Miami International Airport', 'Miami', 'United States', 25.79319953918457, -80.29060363769531, 8, 'America/New_York'),
 ('SEA', 'KSEA', 'Seattle Tacoma International Airport', 'Seattle', 'United States', 47.449001, -122.308998, 433, 'America/Los_Angeles'),
-('CHA', 'KCHA', 'Lovell Field', 'Chattanooga', 'United States', 35.035301208496094, -85.20379638671875, 683, 'America/New_York'),
+('CHA', 'KCHA', 'Chattanooga Metropolitan Airport', 'Chattanooga', 'United States', 35.035301208496094, -85.20379638671875, 683, 'America/New_York'),
 ('BDR', 'KBDR', 'Igor I Sikorsky Memorial Airport', 'Stratford', 'United States', 41.16350173950195, -73.1261978149414, 9, 'America/New_York'),
 ('JAN', 'KJAN', 'Jackson-Medgar Wiley Evers International Airport', 'Jackson', 'United States', 32.3111991882, -90.0758972168, 346, 'America/Chicago'),
 ('GLS', 'KGLS', 'Scholes International At Galveston Airport', 'Galveston', 'United States', 29.265300750732422, -94.86039733886719, 6, 'America/Chicago'),
