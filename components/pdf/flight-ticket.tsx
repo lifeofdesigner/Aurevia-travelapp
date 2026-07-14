@@ -6,7 +6,8 @@ import {type SupportedCurrency} from "@/lib/money";
 
 import {
   formatPdfDate,
-  formatPdfDateTime,
+  formatPdfShortDate,
+  formatPdfTime,
   formatPdfDuration,
   formatPdfMoney,
   defaultPdfBranding,
@@ -59,6 +60,8 @@ type FlightTicketProps = {
   ticket: FlightTicketData;
 };
 
+// ─── Segment card ───────────────────────────────────────────────────────────
+
 function FlightSegmentCard({
   locale,
   segment
@@ -67,35 +70,35 @@ function FlightSegmentCard({
   segment: FlightTicketData["segments"][number];
 }) {
   return (
-    <View style={[pdfStyles.card, {borderColor: segment.airlineTheme.accent}]}>
-      <View style={pdfStyles.rowBetween}>
-        <View style={pdfStyles.airlineIdentityRow}>
+    <View style={pdfStyles.card} wrap={false}>
+      {/* Airline accent stripe — thin colored top bar using airline's accent */}
+      <View
+        style={[pdfStyles.segmentAccentStripe, {backgroundColor: segment.airlineTheme.accent}]}
+      />
+
+      {/* Header: airline identity + cabin class pill */}
+      <View style={pdfStyles.segmentHeader}>
+        <View style={pdfStyles.segmentFlightInfo}>
           {isLikelyPdfRasterImageUrl(segment.airlineLogoUrl) ? (
-            <>
+            <View style={pdfStyles.airlineLogoFrame}>
               {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <Image src={segment.airlineLogoUrl ?? ""} style={pdfStyles.airlineHeaderLogo} />
-            </>
+            </View>
           ) : (
             <View
-              style={[
-                pdfStyles.airlineBadge,
-                {backgroundColor: segment.airlineTheme.primary}
-              ]}
+              style={[pdfStyles.airlineBadge, {backgroundColor: segment.airlineTheme.primary}]}
             >
               <Text
-                style={[
-                  pdfStyles.airlineBadgeText,
-                  {color: segment.airlineTheme.textOnPrimary}
-                ]}
+                style={[pdfStyles.airlineBadgeText, {color: segment.airlineTheme.textOnPrimary}]}
               >
                 {segment.airlineCode}
               </Text>
             </View>
           )}
           <View>
-            <Text style={pdfStyles.keyLabel}>Airline and flight</Text>
-            <Text style={pdfStyles.keyValue}>
-              {segment.airlineName} | {segment.flightNumber}
+            <Text style={pdfStyles.segmentFlightLabel}>Airline · Flight</Text>
+            <Text style={pdfStyles.segmentFlightNumber}>
+              {segment.airlineName} · {segment.flightNumber}
             </Text>
           </View>
         </View>
@@ -104,42 +107,61 @@ function FlightSegmentCard({
         </View>
       </View>
 
-      <View style={[pdfStyles.twoColumn, {marginTop: 12}]}>
-        <View style={{width: "47%"}}>
-          <Text style={pdfStyles.keyLabel}>Departure</Text>
-          <Text style={pdfStyles.keyValueStrong}>{segment.departureAirportCode}</Text>
-          <Text style={pdfStyles.keyValue}>{segment.departureCityName}</Text>
-          <Text style={pdfStyles.bodyText}>{segment.departureAirportName}</Text>
-          <Text style={[pdfStyles.bodyText, {marginTop: 4}]}>
-            {formatPdfDateTime(segment.departureAt, locale)}
-          </Text>
+      <View style={pdfStyles.divider} />
+
+      {/* Route: departure — connector — arrival, horizontal airline-standard layout */}
+      <View style={pdfStyles.segmentRouteRow}>
+        {/* Departure column */}
+        <View style={{width: "35%"}}>
+          <Text style={pdfStyles.segmentTime}>{formatPdfTime(segment.departureAt, locale)}</Text>
+          <Text style={pdfStyles.segmentCode}>{segment.departureAirportCode}</Text>
+          <Text style={pdfStyles.segmentCity}>{segment.departureCityName}</Text>
+          <Text style={pdfStyles.segmentAirport}>{segment.departureAirportName}</Text>
+          <Text style={pdfStyles.segmentDate}>{formatPdfShortDate(segment.departureAt, locale)}</Text>
         </View>
-        <View style={{width: "47%"}}>
-          <Text style={pdfStyles.keyLabel}>Arrival</Text>
-          <Text style={pdfStyles.keyValueStrong}>{segment.arrivalAirportCode}</Text>
-          <Text style={pdfStyles.keyValue}>{segment.arrivalCityName}</Text>
-          <Text style={pdfStyles.bodyText}>{segment.arrivalAirportName}</Text>
-          <Text style={[pdfStyles.bodyText, {marginTop: 4}]}>
-            {formatPdfDateTime(segment.arrivalAt, locale)}
+
+        {/* Center connector with duration */}
+        <View style={[pdfStyles.segmentConnector, {width: "28%"}]}>
+          <Text style={pdfStyles.segmentConnectorMeta}>
+            {formatPdfDuration(segment.durationMinutes)}
+          </Text>
+          <View style={pdfStyles.segmentConnectorLine} />
+          <Text style={pdfStyles.segmentConnectorMeta}>{segment.stopSummary}</Text>
+        </View>
+
+        {/* Arrival column — right-aligned */}
+        <View style={{width: "35%"}}>
+          <Text style={[pdfStyles.segmentTime, pdfStyles.textRight]}>
+            {formatPdfTime(segment.arrivalAt, locale)}
+          </Text>
+          <Text style={[pdfStyles.segmentCode, pdfStyles.textRight]}>
+            {segment.arrivalAirportCode}
+          </Text>
+          <Text style={[pdfStyles.segmentCity, pdfStyles.textRight]}>
+            {segment.arrivalCityName}
+          </Text>
+          <Text style={[pdfStyles.segmentAirport, pdfStyles.textRight]}>
+            {segment.arrivalAirportName}
+          </Text>
+          <Text style={[pdfStyles.segmentDate, pdfStyles.textRight]}>
+            {formatPdfShortDate(segment.arrivalAt, locale)}
           </Text>
         </View>
       </View>
 
-      <View style={[pdfStyles.twoColumn, {marginTop: 12}]}>
-        <View style={{width: "47%"}}>
-          <Text style={pdfStyles.keyLabel}>Duration and stops</Text>
-          <Text style={pdfStyles.bodyText}>
-            {formatPdfDuration(segment.durationMinutes)} | {segment.stopSummary}
-          </Text>
-        </View>
-        <View style={{width: "47%"}}>
-          <Text style={pdfStyles.keyLabel}>Baggage allowance</Text>
-          <Text style={pdfStyles.bodyText}>{segment.baggageAllowance}</Text>
+      <View style={pdfStyles.divider} />
+
+      {/* Baggage allowance as compact pill tags */}
+      <View style={pdfStyles.baggageRow}>
+        <View style={pdfStyles.baggagePill}>
+          <Text style={pdfStyles.baggagePillText}>{segment.baggageAllowance}</Text>
         </View>
       </View>
     </View>
   );
 }
+
+// ─── Main ticket document ────────────────────────────────────────────────────
 
 export function FlightTicket({
   branding = defaultPdfBranding,
@@ -148,10 +170,21 @@ export function FlightTicket({
 }: FlightTicketProps) {
   const firstSegment = ticket.segments[0];
   const lastSegment = ticket.segments[ticket.segments.length - 1] ?? firstSegment;
+
   const routeMeta =
     ticket.segments.length <= 1
       ? "Nonstop"
       : `${ticket.segments.length - 1} stop${ticket.segments.length === 2 ? "" : "s"}`;
+
+  // True journey duration: first departure to last arrival
+  const totalJourneyMinutes =
+    firstSegment && lastSegment
+      ? Math.round(
+          (new Date(lastSegment.arrivalAt).getTime() -
+            new Date(firstSegment.departureAt).getTime()) /
+            60000
+        )
+      : 0;
 
   return (
     <Document
@@ -160,10 +193,19 @@ export function FlightTicket({
       title={`${branding.siteName} Flight E-Ticket ${ticket.bookingReference}`}
     >
       <Page size="A4" style={pdfStyles.page}>
-        <View style={[pdfStyles.header, {backgroundColor: ticket.primaryAirline.theme.primary}]}>
+
+        {/* ─────────────────────────────────────────────────────────────
+            HEADER — airline primary color background
+            Contains: brand identity + booking ref (top bar)
+                      route board with large airport codes + times
+        ───────────────────────────────────────────────────────────── */}
+        <View
+          style={[pdfStyles.header, {backgroundColor: ticket.primaryAirline.theme.primary}]}
+        >
+          {/* Top bar: brand left, booking reference right */}
           <View style={pdfStyles.headerTop}>
-            <View style={{width: "58%"}}>
-              <Text style={pdfStyles.brandKicker}>Travel document</Text>
+            <View style={{width: "55%"}}>
+              <Text style={pdfStyles.brandKicker}>Electronic Ticket Receipt</Text>
               {branding.logoUrl ? (
                 <>
                   {/* eslint-disable-next-line jsx-a11y/alt-text */}
@@ -173,120 +215,125 @@ export function FlightTicket({
                 <Text style={pdfStyles.brandName}>{branding.siteName}</Text>
               )}
               <Text style={pdfStyles.headerMeta}>
-                {branding.businessLocation} | {branding.contactEmail}
+                {branding.businessLocation} · {branding.contactEmail}
               </Text>
             </View>
+
+            {/* Booking reference panel — the PNR, prominently placed */}
             <View style={pdfStyles.referencePanel}>
-              <Text style={pdfStyles.referenceLabel}>Booking reference</Text>
+              <Text style={pdfStyles.referenceLabel}>Booking Reference</Text>
               <Text style={pdfStyles.referenceValue}>{ticket.bookingReference}</Text>
-            </View>
-          </View>
-
-          <View style={[pdfStyles.airlineIdentityRow, {marginTop: 16}]}>
-            {isLikelyPdfRasterImageUrl(ticket.primaryAirline.logoUrl) ? (
-              <>
-                {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                <Image src={ticket.primaryAirline.logoUrl ?? ""} style={pdfStyles.airlineHeaderLogo} />
-              </>
-            ) : (
-              <View
-                style={[
-                  pdfStyles.airlineBadge,
-                  {backgroundColor: ticket.primaryAirline.theme.accent}
-                ]}
-              >
-                <Text
-                  style={[
-                    pdfStyles.airlineBadgeText,
-                    {color: ticket.primaryAirline.theme.primary}
-                  ]}
-                >
-                  {ticket.primaryAirline.code}
-                </Text>
-              </View>
-            )}
-            <View>
-              <Text style={pdfStyles.referenceLabel}>Selected airline</Text>
-              <Text style={[pdfStyles.referenceValue, {fontSize: 13}]}>
-                {ticket.primaryAirline.name}
+              <Text style={[pdfStyles.referenceLabel, {marginTop: 8}]}>Issued</Text>
+              <Text style={[pdfStyles.referenceValue, {fontSize: 11, letterSpacing: 0.3}]}>
+                {formatPdfDate(ticket.bookingDate, locale)}
               </Text>
             </View>
           </View>
 
-          <Text style={pdfStyles.documentTitle}>Electronic Ticket Receipt</Text>
-          <Text style={pdfStyles.documentSubTitle}>
-            Official flight itinerary issued on {formatPdfDate(ticket.bookingDate, locale)}.
-            Present this document with a valid passport or government-issued ID.
-          </Text>
-
+          {/* Route board — the hero element: departure → arrival */}
           {firstSegment ? (
             <View style={pdfStyles.routeBoard}>
+              {/* Departure */}
               <View style={pdfStyles.routeBoardColumn}>
-                <Text style={pdfStyles.routeAirportCode}>{firstSegment.departureAirportCode}</Text>
+                <Text style={pdfStyles.routeBoardTime}>
+                  {formatPdfTime(firstSegment.departureAt, locale)}
+                </Text>
+                <Text style={pdfStyles.routeAirportCode}>
+                  {firstSegment.departureAirportCode}
+                </Text>
                 <Text style={pdfStyles.routeAirportName}>
-                  {firstSegment.departureCityName} | {firstSegment.departureAirportName}
+                  {firstSegment.departureCityName}
+                </Text>
+                <Text style={[pdfStyles.routeAirportName, {marginTop: 1}]}>
+                  {formatPdfShortDate(firstSegment.departureAt, locale)}
                 </Text>
               </View>
-              <Text style={pdfStyles.routeBoardMeta}>
-                {routeMeta}
-                {"\n"}
-                {formatPdfDuration(
-                  ticket.segments.reduce((total, segment) => total + segment.durationMinutes, 0)
-                )}
-              </Text>
-              <View style={[pdfStyles.routeBoardColumn, pdfStyles.textRight]}>
-                <Text style={pdfStyles.routeAirportCode}>{lastSegment.arrivalAirportCode}</Text>
-                <Text style={pdfStyles.routeAirportName}>
-                  {lastSegment.arrivalCityName} | {lastSegment.arrivalAirportName}
+
+              {/* Center: journey duration + visual connector + stop summary */}
+              <View style={pdfStyles.routeBoardCenter}>
+                <Text style={pdfStyles.routeBoardMeta}>
+                  {formatPdfDuration(totalJourneyMinutes)}
+                </Text>
+                <View style={pdfStyles.routeConnectorLine} />
+                <Text style={pdfStyles.routeBoardMeta}>{routeMeta}</Text>
+              </View>
+
+              {/* Arrival */}
+              <View style={[pdfStyles.routeBoardColumn, {alignItems: "flex-end"}]}>
+                <Text style={[pdfStyles.routeBoardTime, pdfStyles.textRight]}>
+                  {formatPdfTime(lastSegment.arrivalAt, locale)}
+                </Text>
+                <Text style={[pdfStyles.routeAirportCode, pdfStyles.textRight]}>
+                  {lastSegment.arrivalAirportCode}
+                </Text>
+                <Text style={[pdfStyles.routeAirportName, pdfStyles.textRight]}>
+                  {lastSegment.arrivalCityName}
+                </Text>
+                <Text style={[pdfStyles.routeAirportName, {marginTop: 1, textAlign: "right"}]}>
+                  {formatPdfShortDate(lastSegment.arrivalAt, locale)}
                 </Text>
               </View>
             </View>
           ) : null}
         </View>
 
+        {/* ─────────────────────────────────────────────────────────────
+            STATUS STRIP — booking status, cabin class, supplier ref
+        ───────────────────────────────────────────────────────────── */}
         <View style={pdfStyles.statusStrip}>
           <Text style={pdfStyles.statusStripText}>Status: {ticket.bookingStatus}</Text>
           <Text style={pdfStyles.statusStripText}>Cabin: {ticket.cabinClass}</Text>
           <Text style={pdfStyles.statusStripText}>
-            Supplier: {ticket.supplierReference ?? "Pending"}
+            Supplier:{" "}
+            {ticket.supplierReference ?? "Pending"}
           </Text>
         </View>
 
+        {/* ─────────────────────────────────────────────────────────────
+            BODY
+        ───────────────────────────────────────────────────────────── */}
         <View style={pdfStyles.body}>
-          <View style={pdfStyles.section}>
-            <Text style={pdfStyles.sectionTitle}>Passenger and ticketing</Text>
-            {ticket.passengerNames.length > 0 ? (
-              ticket.passengerNames.map((name, index) => (
-                <View key={`${name}-${index}`} style={pdfStyles.card}>
-                  <View style={pdfStyles.rowBetween}>
-                    <View style={{width: "48%"}}>
-                      <Text style={pdfStyles.keyLabel}>Passenger name</Text>
-                      <Text style={pdfStyles.keyValueStrong}>{name}</Text>
-                    </View>
-                    <View style={{width: "23%"}}>
-                      <Text style={pdfStyles.keyLabel}>Ticket number</Text>
-                      <Text style={pdfStyles.keyValue}>
-                        {ticket.bookingReference}-{String(index + 1).padStart(2, "0")}
-                      </Text>
-                    </View>
-                    <View style={{width: "22%"}}>
-                      <Text style={pdfStyles.keyLabel}>Document type</Text>
-                      <Text style={pdfStyles.keyValue}>E-ticket</Text>
+
+          {/* ── Passengers ── */}
+          <View style={pdfStyles.section} wrap={false}>
+            <Text style={pdfStyles.sectionTitle}>Passengers</Text>
+            <View style={pdfStyles.card}>
+              {ticket.passengerNames.length > 0 ? (
+                ticket.passengerNames.map((name, index) => (
+                  <View key={`${name}-${index}`}>
+                    {index > 0 ? <View style={pdfStyles.divider} /> : null}
+                    <View style={pdfStyles.rowBetween}>
+                      <View style={{width: "48%"}}>
+                        <Text style={pdfStyles.keyLabel}>Passenger name</Text>
+                        <Text style={pdfStyles.keyValue}>{name}</Text>
+                      </View>
+                      <View style={{width: "26%"}}>
+                        <Text style={pdfStyles.keyLabel}>Ticket number</Text>
+                        <Text style={pdfStyles.keyValue}>
+                          {ticket.bookingReference}-{String(index + 1).padStart(2, "0")}
+                        </Text>
+                      </View>
+                      <View style={{width: "20%"}}>
+                        <Text style={pdfStyles.keyLabel}>Type</Text>
+                        <Text style={pdfStyles.keyValue}>E-ticket</Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-              ))
-            ) : (
-              <View style={pdfStyles.card}>
+                ))
+              ) : (
                 <Text style={pdfStyles.bodyText}>
                   Passenger details are attached to your confirmed booking record.
                 </Text>
-              </View>
-            )}
+              )}
+            </View>
           </View>
 
+          {/* ── Flight itinerary — one card per segment ── */}
           <View style={pdfStyles.section}>
-            <Text style={pdfStyles.sectionTitle}>Itinerary</Text>
+            <Text style={pdfStyles.sectionTitle}>
+              Flight Itinerary
+              {ticket.segments.length > 1 ? ` · ${ticket.segments.length} Segments` : ""}
+            </Text>
             {ticket.segments.map((segment) => (
               <FlightSegmentCard
                 key={`${segment.flightNumber}-${segment.departureAt}`}
@@ -296,51 +343,80 @@ export function FlightTicket({
             ))}
           </View>
 
-          <View style={pdfStyles.section}>
-            <Text style={pdfStyles.sectionTitle}>Fare receipt</Text>
+          {/* ── Fare receipt — proper table alignment ── */}
+          <View style={pdfStyles.section} wrap={false}>
+            <Text style={pdfStyles.sectionTitle}>Fare Receipt</Text>
             <View style={pdfStyles.card}>
-              <View style={[pdfStyles.rowBetween, {marginBottom: 8}]}>
-                <Text style={pdfStyles.bodyText}>Base fare</Text>
-                <Text style={pdfStyles.keyValue}>
+              <View style={pdfStyles.fareRow}>
+                <Text style={pdfStyles.fareRowLabel}>Base fare</Text>
+                <Text style={pdfStyles.fareRowAmount}>
                   {formatPdfMoney(ticket.priceBaseFareMinor, ticket.currency, locale)}
                 </Text>
               </View>
-              <View style={[pdfStyles.rowBetween, {marginBottom: 8}]}>
-                <Text style={pdfStyles.bodyText}>Taxes</Text>
-                <Text style={pdfStyles.keyValue}>
+              <View style={[pdfStyles.divider, {marginVertical: 0}]} />
+              <View style={pdfStyles.fareRow}>
+                <Text style={pdfStyles.fareRowLabel}>Taxes &amp; fees</Text>
+                <Text style={pdfStyles.fareRowAmount}>
                   {formatPdfMoney(ticket.priceTaxMinor, ticket.currency, locale)}
                 </Text>
               </View>
-              <View style={pdfStyles.divider} />
-              <View style={pdfStyles.rowBetween}>
-                <Text style={pdfStyles.keyValueStrong}>Total paid</Text>
-                <Text style={pdfStyles.keyValueStrong}>
+              <View style={pdfStyles.fareTotalRow}>
+                <Text style={pdfStyles.fareTotalLabel}>Total Paid</Text>
+                <Text style={pdfStyles.fareTotalAmount}>
                   {formatPdfMoney(ticket.priceTotalMinor, ticket.currency, locale)}
                 </Text>
               </View>
             </View>
           </View>
 
-          <View style={pdfStyles.section}>
-            <Text style={pdfStyles.sectionTitle}>Travel notices</Text>
-            <View style={[pdfStyles.card, pdfStyles.cardMuted]}>
-              <Text style={[pdfStyles.bodyText, {marginBottom: 6}]}>
-                Check in online where available and arrive at the airport with enough time for security, document verification, and boarding.
-              </Text>
-              <Text style={[pdfStyles.bodyText, {marginBottom: 6}]}>
-                Baggage rules: {ticket.baggageRule}
-              </Text>
-              <Text style={pdfStyles.bodyText}>
-                Contact: {branding.contactEmail} | {branding.supportPhone}
-                {ticket.supplierReference ? ` | Supplier reference: ${ticket.supplierReference}` : ""}
+          {/* ── Check-in strip — boarding-pass visual anchor ── */}
+          <View style={pdfStyles.checkInStrip} wrap={false}>
+            <View style={pdfStyles.checkInCodeBox}>
+              <Text style={pdfStyles.checkInCodeLabel}>Ref</Text>
+              <Text style={pdfStyles.checkInCodeValue}>{ticket.bookingReference}</Text>
+            </View>
+            <View style={{flex: 1}}>
+              <Text style={pdfStyles.checkInTitle}>Check-in Information</Text>
+              <Text style={pdfStyles.checkInText}>
+                Present this document with a valid passport or government-issued photo ID. Online
+                check-in typically opens 24{"\u2013"}48 hours before departure {"\u2014"} check your
+                {"airline\u2019s"} website for specific times.
               </Text>
             </View>
           </View>
+
+          {/* ── Travel notices — subdued footer section ── */}
+          <View style={pdfStyles.section} wrap={false}>
+            <Text style={pdfStyles.sectionTitle}>Travel Notices</Text>
+            <View style={[pdfStyles.card, pdfStyles.cardMuted]}>
+              <Text style={[pdfStyles.bodyText, {marginBottom: 5}]}>
+                Arrive at the airport with sufficient time for security screening, document
+                verification, and boarding. Most airlines recommend arriving 2{"\u2013"}3 hours
+                before international departures.
+              </Text>
+              <Text style={[pdfStyles.bodyText, {marginBottom: 5}]}>
+                Baggage allowance: {ticket.baggageRule}. Excess baggage fees are charged by the
+                operating airline at check-in.
+              </Text>
+              <Text style={pdfStyles.bodyText}>
+                Support: {branding.contactEmail} · {branding.supportPhone}
+                {ticket.supplierReference
+                  ? ` · Supplier reference: ${ticket.supplierReference}`
+                  : ""}
+              </Text>
+            </View>
+          </View>
+
         </View>
 
+        {/* ─────────────────────────────────────────────────────────────
+            FOOTER — fixed, appears on every page
+        ───────────────────────────────────────────────────────────── */}
         <Text fixed style={pdfStyles.footer}>
-          This is your official e-ticket receipt | {branding.siteName} | {branding.businessLocation}
+          Official e-ticket receipt · {branding.siteName} · {branding.businessLocation} ·{" "}
+          {branding.contactEmail}
         </Text>
+
       </Page>
     </Document>
   );
