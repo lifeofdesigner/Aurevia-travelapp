@@ -67,6 +67,7 @@ export function AdminBookingOperations({
   const [replyTo, setReplyTo] = useState("");
   const [isStatusPending, setIsStatusPending] = useState(false);
   const [isBankTransferConfirmPending, setIsBankTransferConfirmPending] = useState(false);
+  const [isManualConfirmPending, setIsManualConfirmPending] = useState(false);
   const [isRefundPending, setIsRefundPending] = useState(false);
   const [isEmailPending, setIsEmailPending] = useState(false);
 
@@ -126,6 +127,32 @@ export function AdminBookingOperations({
       });
     } finally {
       setIsBankTransferConfirmPending(false);
+    }
+  }
+
+  async function handleManualPaymentConfirm() {
+    setIsManualConfirmPending(true);
+
+    try {
+      const response = await fetch(`/api/admin/bookings/${bookingId}/payment/confirm`, {
+        method: "POST"
+      });
+      const payload = (await response.json()) as {message?: string};
+
+      if (!response.ok) {
+        throw new Error(payload.message ?? "Unable to confirm payment.");
+      }
+
+      toast.success("Payment confirmed", {
+        description: "The booking is now marked as paid and confirmed. A confirmation email has been sent to the customer."
+      });
+      router.refresh();
+    } catch (error) {
+      toast.error("Unable to confirm payment", {
+        description: error instanceof Error ? error.message : "Please try again."
+      });
+    } finally {
+      setIsManualConfirmPending(false);
     }
   }
 
@@ -250,6 +277,16 @@ export function AdminBookingOperations({
                 type="button"
               >
                 {isBankTransferConfirmPending ? "Confirming..." : "Confirm bank transfer paid"}
+              </Button>
+            ) : null}
+            {paymentStatus !== "paid" ? (
+              <Button
+                className="ml-3 border border-[#1c3d2e] bg-white text-[#1c3d2e] hover:bg-[#f0f5f2]"
+                disabled={isManualConfirmPending}
+                onClick={handleManualPaymentConfirm}
+                type="button"
+              >
+                {isManualConfirmPending ? "Confirming..." : "Manually confirm payment"}
               </Button>
             ) : null}
           </CardContent>

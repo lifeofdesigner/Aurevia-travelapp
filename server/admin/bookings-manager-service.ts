@@ -10,6 +10,7 @@ import {type BookingStatus, type PaymentStatus} from "@/types/database-enums";
 import {createEmailProvider} from "@/server/email/provider";
 import {sendBookingCancellationEmail} from "@/server/email/transactional";
 import {confirmBankTransferPaymentForBooking} from "@/server/payments/bank-transfer-service";
+import {finalizeSuccessfulProviderCheckoutPayment} from "@/server/payments/provider-finalization";
 import {getConfiguredStripeClient} from "@/server/payments/stripe";
 import {createSupabaseAdminClient} from "@/server/supabase/admin";
 
@@ -399,6 +400,67 @@ export async function confirmAdminBankTransferPayment({
     entityType: "booking",
     metadata: {
       provider: "bank_transfer"
+    }
+  });
+}
+
+export async function confirmAdminPaymentManually({
+  actor,
+  bookingId
+}: {
+  actor: AdminStaffIdentity;
+  bookingId: string;
+}) {
+  assertBookingManagerAccess(actor);
+
+  const admin = createSupabaseAdminClient();
+  const bookingResult = await admin
+    .from("bookings")
+    .select("id, booking_reference, customer_user_id, total_amount_minor, payment_status, status")
+    .eq("id", bookingId)
+    .is("deleted_at", null)
+    .maybeSingle();
+
+  const booking = bookingResult.data as {
+    customer_user_id: string;
+    id: string;
+    payment_status: string;
+    status: string;
+    total_amount_minor: number;
+  } | null;
+
+  if (!booking) {
+    throw new Error("Booking not found.");
+  }
+
+  if (booking.payment_status === "paid" && booking.status === "confirmed") {
+    throw new Error("This booking is already confirmed and paid.");
+  }
+
+  const overrideReference = `ADMIN-OVERRIDE-${bookingId}`;
+
+  await finalizeSuccessfulProviderCheckoutPayment({
+    amountMinor: booking.total_amount_minor,
+    bookingId,
+    checkoutReference: overrideReference,
+    metadata: {
+      confirmedByAdminUserId: actor.userId,
+      override: true
+    },
+    paymentMethodLabel: "Manual admin override",
+    provider: "manual",
+    providerPaymentReference: overrideReference,
+    userId: booking.customer_user_id
+  });
+
+  await createAdminAuditLog({
+    action: "booking.payment.manually_confirmed",
+    actorRole: actor.role,
+    actorUserId: actor.userId,
+    entityId: bookingId,
+    entityType: "booking",
+    metadata: {
+      override: true
     }
   });
 }
