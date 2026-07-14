@@ -5,6 +5,7 @@ import {PDFDocument, PDFImage, PDFPage, PDFFont, StandardFonts, rgb} from "pdf-l
 import {formatDateTime} from "@/lib/dates";
 import {
   getAirlineBrandTheme,
+  getPdfAirlineLogoUrl,
   isLikelyPdfRasterImageUrl,
   type AirlineBrandTheme
 } from "@/lib/flights/airline-branding";
@@ -97,13 +98,17 @@ function extractFlightAirlineBrand(booking: AdminBookingDetail): AirlineBrandIde
     (entry) => asString(entry.code).trim().toUpperCase() === code
   );
   const name = asString(matchingEntry?.name) || fallbackName;
+  const resolvedCode = code || asString(matchingEntry?.code).trim().toUpperCase() || "AIR";
 
   return {
-    code: code || "AIR",
-    logoUrl: asString(matchingEntry?.logoUrl) || null,
+    code: resolvedCode,
+    logoUrl: getPdfAirlineLogoUrl({
+      code: resolvedCode,
+      logoUrl: asString(matchingEntry?.logoUrl) || null
+    }),
     name,
     theme: getAirlineBrandTheme({
-      code: code || "AIR",
+      code: resolvedCode,
       name
     })
   };

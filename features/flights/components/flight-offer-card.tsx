@@ -1,11 +1,13 @@
 "use client";
 
 import {ArrowRight, BriefcaseBusiness, ShieldCheck, Ticket} from "lucide-react";
+import Image from "next/image";
 import {useTranslations} from "next-intl";
 import Link from "next/link";
 
 import {Button} from "@/components/ui/button";
 import {CurrencyAmount} from "@/lib/currency/use-currency";
+import {getAirlineLogoUrl} from "@/lib/flights/airline-branding";
 
 import {formatFlightDate, formatFlightDuration, formatFlightTime} from "../lib/formatters";
 import {type NormalizedFlightOffer} from "../types";
@@ -21,18 +23,37 @@ export function FlightOfferCard({href, locale, offer}: FlightOfferCardProps) {
   const outboundLeg = offer.legs[0];
   const firstSegment = outboundLeg.segments[0];
   const finalSegment = outboundLeg.segments[outboundLeg.segments.length - 1];
+  const airlineIdentities = offer.airlineCodes.map((code, index) => ({
+    code,
+    logoUrl: getAirlineLogoUrl(code, 64),
+    name: offer.airlineNames[index] ?? code
+  }));
 
   return (
     <article className="overflow-hidden rounded-lg border border-border/80 bg-card/92 shadow-soft">
       <div className="grid gap-6 p-5 lg:grid-cols-[1fr_auto] lg:p-6">
         <div className="space-y-5">
-          <div className="flex flex-wrap items-center gap-2">
-            {offer.airlineNames.map((airline) => (
+          <div className="flex flex-wrap items-center gap-3">
+            {airlineIdentities.map((airline) => (
               <span
-                key={airline}
-                className="rounded-full border border-border/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground"
+                key={airline.code}
+                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground"
               >
-                {airline}
+                {airline.logoUrl ? (
+                  <Image
+                    alt={`${airline.name} logo`}
+                    className="h-7 w-7 rounded-full bg-white object-contain p-1"
+                    height={28}
+                    src={airline.logoUrl}
+                    unoptimized
+                    width={28}
+                  />
+                ) : (
+                  <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-secondary px-1.5 text-[10px] text-secondary-foreground">
+                    {airline.code}
+                  </span>
+                )}
+                <span>{airline.name}</span>
               </span>
             ))}
             <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-secondary-foreground">

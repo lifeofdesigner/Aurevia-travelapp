@@ -1,7 +1,7 @@
--- Airports seed data (OpenFlights dataset, filtered to airports_openflights with valid IATA codes)
--- 6,072 real commercial/scheduled airports_openflights worldwide
+-- Airports seed data (OpenFlights dataset, filtered to airports with valid IATA codes)
+-- 6,072 real commercial/scheduled airports worldwide
 
-create table if not exists airports_openflights (
+create table if not exists airports (
   id serial primary key,
   iata_code text unique not null,
   icao_code text,
@@ -22,14 +22,14 @@ create table if not exists airports_openflights (
   ) stored
 );
 
-create index if not exists idx_airports_iata on airports_openflights (iata_code);
-create index if not exists idx_airports_search_vector on airports_openflights using gin (search_vector);
+create index if not exists idx_airports_iata on airports (iata_code);
+create index if not exists idx_airports_search on airports using gin (search_vector);
 
 -- Public read access (airport data is not sensitive)
-alter table airports_openflights enable row level security;
-create policy "Airports are publicly readable" on airports_openflights for select using (true);
+alter table airports enable row level security;
+create policy "Airports are publicly readable" on airports for select using (true);
 
-insert into airports_openflights (iata_code, icao_code, name, city, country, latitude, longitude, altitude_ft, timezone) values
+insert into airports (iata_code, icao_code, name, city, country, latitude, longitude, altitude_ft, timezone) values
 ('GKA', 'AYGA', 'Goroka Airport', 'Goroka', 'Papua New Guinea', -6.081689834590001, 145.391998291, 5282, 'Pacific/Port_Moresby'),
 ('MAG', 'AYMD', 'Madang Airport', 'Madang', 'Papua New Guinea', -5.20707988739, 145.789001465, 20, 'Pacific/Port_Moresby'),
 ('HGU', 'AYMH', 'Mount Hagen Kagamuga Airport', 'Mount Hagen', 'Papua New Guinea', -5.826789855957031, 144.29600524902344, 5388, 'Pacific/Port_Moresby'),

@@ -31,6 +31,20 @@ const fallbackTheme = {
   textOnPrimary: "#ffffff"
 };
 
+function normalizeAirlineCode(code: string | null | undefined) {
+  const normalizedCode = code?.trim().toUpperCase() ?? "";
+
+  if (!/^[A-Z0-9]{2,3}$/.test(normalizedCode)) {
+    return "";
+  }
+
+  if (["AIR", "XX", "XXX"].includes(normalizedCode)) {
+    return "";
+  }
+
+  return normalizedCode;
+}
+
 export function getAirlineBrandTheme({
   code,
   name
@@ -61,4 +75,29 @@ export function isLikelyPdfRasterImageUrl(value: string | null | undefined) {
   } catch {
     return false;
   }
+}
+
+export function getAirlineLogoUrl(
+  code: string | null | undefined,
+  size: 64 | 128 = 128
+) {
+  const normalizedCode = normalizeAirlineCode(code);
+
+  return normalizedCode
+    ? `https://images.kiwi.com/airlines/${size}/${normalizedCode}.png`
+    : null;
+}
+
+export function getPdfAirlineLogoUrl({
+  code,
+  logoUrl
+}: {
+  code: string | null | undefined;
+  logoUrl?: string | null;
+}) {
+  if (isLikelyPdfRasterImageUrl(logoUrl)) {
+    return logoUrl ?? null;
+  }
+
+  return getAirlineLogoUrl(code, 128);
 }

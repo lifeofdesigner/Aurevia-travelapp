@@ -13,6 +13,7 @@ import {
   type FlightSegment
 } from "@/features/flights/lib/flight-types";
 import {parseFlightSearchCriteria} from "@/features/flights/lib/schemas";
+import {getAirlineLogoUrl} from "@/lib/flights/airline-branding";
 import {createSupabaseServerClient} from "@/lib/supabase/server";
 import {searchFlights as searchFlightsFromServer} from "@/server/flights/search-service";
 
@@ -102,7 +103,10 @@ const AIRLINES: Airline[] = [
   {name: "Qatar Airways", code: "QR"},
   {name: "British Airways", code: "BA"},
   {name: "Emirates", code: "EK"}
-];
+].map((airline) => ({
+  ...airline,
+  logo: getAirlineLogoUrl(airline.code, 64) ?? undefined
+}));
 
 const routePriceOverrides: Record<string, number> = {
   "LOS-ABV": 145000,

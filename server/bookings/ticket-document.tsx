@@ -9,7 +9,10 @@ import {
 } from "@/components/pdf/generic-booking-document";
 import {HotelVoucher, type HotelVoucherData} from "@/components/pdf/hotel-voucher";
 import {type PdfBranding} from "@/components/pdf/shared";
-import {getAirlineBrandTheme} from "@/lib/flights/airline-branding";
+import {
+  getAirlineBrandTheme,
+  getPdfAirlineLogoUrl
+} from "@/lib/flights/airline-branding";
 import {type Locale} from "@/lib/i18n/routing";
 import {type SupportedCurrency} from "@/lib/money";
 
@@ -159,13 +162,17 @@ function resolveSegmentAirline(
     "Airline";
   const entry = airlineLogoEntries.get(code);
   const name = entry?.name || fallbackName;
+  const resolvedCode = code || entry?.code || "AIR";
 
   return {
-    code: code || entry?.code || "AIR",
-    logoUrl: entry?.logoUrl ?? null,
+    code: resolvedCode,
+    logoUrl: getPdfAirlineLogoUrl({
+      code: resolvedCode,
+      logoUrl: entry?.logoUrl ?? null
+    }),
     name,
     theme: getAirlineBrandTheme({
-      code: code || entry?.code || "AIR",
+      code: resolvedCode,
       name
     })
   };

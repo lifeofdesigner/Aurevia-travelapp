@@ -150,8 +150,8 @@ async function buildOpenflightsSuggestions(query: string): Promise<AirportSearch
           ? admin
               .from("airports_openflights")
               .select("iata_code, name, city, country")
-              .textSearch("iata_code, name, city, country", tsQuery, {
-                type: "websearch",
+              .textSearch("search_vector", tsQuery, {
+                type: "plain",
                 config: "simple"
               })
               .limit(8)
@@ -184,8 +184,8 @@ async function buildOpenflightsSuggestions(query: string): Promise<AirportSearch
     const result = await admin
       .from("airports_openflights")
       .select("iata_code, name, city, country")
-      .textSearch("iata_code, name, city, country", tsQuery, {
-        type: "websearch",
+      .textSearch("search_vector", tsQuery, {
+        type: "plain",
         config: "simple"
       })
       .limit(12);

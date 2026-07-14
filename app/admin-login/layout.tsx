@@ -4,6 +4,7 @@ import {type Metadata} from "next";
 import {Inter, Libre_Franklin} from "next/font/google";
 import {type ReactNode} from "react";
 
+import {GlobalInteractionFeedback} from "@/components/shared/feedback/global-interaction-feedback";
 import {buildMetadataIcons, getSiteBranding} from "@/server/brand/site-branding";
 
 const libreFranklin = Libre_Franklin({
@@ -44,7 +45,10 @@ export default async function AdminLoginLayout({children}: AdminLoginLayoutProps
       data-site-theme={branding.websiteTheme}
       suppressHydrationWarning
     >
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <GlobalInteractionFeedback />
+        {children}
+      </body>
     </html>
   );
 }
