@@ -262,7 +262,7 @@ export function AdminBookingOperations({
               </Select>
             </div>
             <Button
-              className="bg-[#1c3d2e] text-white hover:bg-[#111d15]"
+              className="bg-primary text-primary-foreground hover:bg-primary-dark"
               disabled={isStatusPending}
               onClick={handleStatusUpdate}
               type="button"
@@ -271,7 +271,7 @@ export function AdminBookingOperations({
             </Button>
             {paymentStatus === "requires_action" && paymentAmountCapturedMinor <= 0 ? (
               <Button
-                className="ml-3 bg-[#c9a84c] text-[#1c3d2e] hover:bg-[#b99536]"
+                className="ml-3 bg-primary text-primary-foreground hover:bg-primary-dark"
                 disabled={isBankTransferConfirmPending}
                 onClick={handleBankTransferConfirm}
                 type="button"
@@ -281,10 +281,11 @@ export function AdminBookingOperations({
             ) : null}
             {paymentStatus !== "paid" ? (
               <Button
-                className="ml-3 border border-[#1c3d2e] bg-white text-[#1c3d2e] hover:bg-[#f0f5f2]"
+                className="ml-3"
                 disabled={isManualConfirmPending}
                 onClick={handleManualPaymentConfirm}
                 type="button"
+                variant="outline"
               >
                 {isManualConfirmPending ? "Confirming..." : "Manually confirm payment"}
               </Button>

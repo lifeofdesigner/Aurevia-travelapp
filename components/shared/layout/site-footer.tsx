@@ -47,7 +47,7 @@ const socialLinks = [
 ] as const;
 
 const linkClassName =
-  "text-[12px] text-[rgba(232,223,200,0.4)] no-underline transition-colors hover:text-[#c9a84c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111d15]";
+  "text-[12px] text-background/55 no-underline transition-colors hover:text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background focus-visible:ring-offset-2 focus-visible:ring-offset-foreground";
 
 function splitBrandName(siteName: string) {
   const [first, ...rest] = siteName.trim().split(/\s+/);
@@ -65,12 +65,12 @@ export async function SiteFooter({branding, locale}: SiteFooterProps) {
   ]);
 
   return (
-    <footer className="bg-[#111d15]">
+    <footer className="bg-foreground">
       <div className="container py-12">
         <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           <div className="space-y-5">
             <div className="space-y-3">
-              <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[rgba(232,223,200,0.35)]">
+              <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-background/40">
                 Brand
               </p>
               <div className="inline-flex min-h-12 items-center gap-2">
@@ -84,16 +84,16 @@ export async function SiteFooter({branding, locale}: SiteFooterProps) {
                   />
                 ) : (
                   <>
-                    <span className="font-display text-[28px] leading-none text-[#e8dfc8]">
+                    <span className="font-display text-[28px] leading-none text-background">
                       {splitBrandName(branding.siteName).first}
                     </span>
-                    <span className="font-display text-[28px] leading-none text-[#c9a84c]">
+                    <span className="font-display text-[28px] leading-none text-primary-light">
                       {splitBrandName(branding.siteName).rest}
                     </span>
                   </>
                 )}
               </div>
-              <p className="max-w-sm text-[12px] leading-6 text-[rgba(232,223,200,0.4)]">
+              <p className="max-w-sm text-[12px] leading-6 text-background/55">
                 {homepageData.settings.footerTagline || t("trustCopy")}
               </p>
             </div>
@@ -115,7 +115,7 @@ export async function SiteFooter({branding, locale}: SiteFooterProps) {
           </div>
 
           <div className="space-y-4">
-            <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[rgba(232,223,200,0.35)]">
+            <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-background/40">
               Services
             </p>
             <nav aria-label="Services" className="flex flex-col gap-3">
@@ -132,7 +132,7 @@ export async function SiteFooter({branding, locale}: SiteFooterProps) {
           </div>
 
           <div className="space-y-4">
-            <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[rgba(232,223,200,0.35)]">
+            <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-background/40">
               Company
             </p>
             <div className="flex flex-col gap-3">
@@ -145,14 +145,14 @@ export async function SiteFooter({branding, locale}: SiteFooterProps) {
               <a href={`mailto:${branding.contactEmail}`} className={linkClassName}>
                 {branding.contactEmail}
               </a>
-              <p className="text-[12px] text-[rgba(232,223,200,0.4)]">
+              <p className="text-[12px] text-background/55">
                 {branding.businessLocation}
               </p>
             </div>
           </div>
 
           <div className="space-y-4">
-            <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[rgba(232,223,200,0.35)]">
+            <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-background/40">
               Legal
             </p>
             <nav aria-label={t("legalLabel")} className="flex flex-col gap-3">
@@ -169,8 +169,8 @@ export async function SiteFooter({branding, locale}: SiteFooterProps) {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-[rgba(232,223,200,0.1)] pt-5">
-          <p className="text-[12px] text-[rgba(232,223,200,0.4)]">
+        <div className="mt-10 border-t border-background/10 pt-5">
+          <p className="text-[12px] text-background/55">
             &copy; 2026 {branding.siteName}. {formatBusinessAddressForDocuments(branding)}.
           </p>
         </div>

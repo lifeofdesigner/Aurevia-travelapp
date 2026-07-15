@@ -50,28 +50,28 @@ export default async function VisaPage({params, searchParams}: VisaPageProps) {
   return (
     <main id="main-content" className="aurevia-section">
       <div className="mx-auto max-w-6xl space-y-10">
-        <section className="overflow-hidden rounded-[10px] border border-[#e8e0d0] bg-white shadow-soft">
+        <section className="overflow-hidden rounded-[10px] border border-border bg-card shadow-soft">
           <div className="grid gap-8 px-6 py-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-10">
             <div className="space-y-5">
-              <span className="inline-flex rounded-[8px] bg-[#f0ebe0] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1c3d2e]">
+              <span className="inline-flex rounded-[8px] bg-secondary px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-secondary-foreground">
                 Visa support
               </span>
               <div className="space-y-3">
-                <h1 className="font-display text-4xl italic text-[#1c3d2e] sm:text-5xl">
+                <h1 className="font-display text-4xl italic text-foreground sm:text-5xl">
                   Start your visa trip planning with the destination first.
                 </h1>
-                <p className="max-w-2xl text-sm leading-7 text-[#7a9a85]">
+                <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
                   Search the country you want to visit, review the available {branding.siteName}
                   visa support products, and move into the guided application flow step by step.
                 </p>
               </div>
             </div>
 
-            <div className="rounded-[10px] border border-[#e8e0d0] bg-[#f7f3ec] p-5">
+            <div className="rounded-[10px] border border-border bg-background p-5">
               <form action={getLocalizedPath(ROUTES.visa, params.locale)} className="space-y-3">
                 <label
                   htmlFor="visa-country-search"
-                  className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]"
+                  className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
                 >
                   Destination search
                 </label>
@@ -79,26 +79,26 @@ export default async function VisaPage({params, searchParams}: VisaPageProps) {
                   <div className="relative flex-1">
                     <Search
                       aria-hidden="true"
-                      className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#7a9a85]"
+                      className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
                     />
                     <input
                       id="visa-country-search"
                       name="country"
                       defaultValue={selectedCountry?.name ?? submittedQuery}
                       placeholder="I want to travel to..."
-                      className="h-12 w-full rounded-[8px] border border-[#e8e0d0] bg-white pl-11 pr-4 text-sm text-[#1c3d2e] shadow-sm outline-none transition-colors focus:border-[#c9a84c]"
+                      className="h-12 w-full rounded-[8px] border border-input bg-background pl-11 pr-4 text-sm text-foreground shadow-sm outline-none transition-colors focus:border-ring"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="inline-flex h-12 items-center justify-center rounded-[8px] bg-[#1c3d2e] px-5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#f5f0e8] transition-colors hover:bg-[#2a5a40]"
+                    className="inline-flex h-12 items-center justify-center rounded-[8px] bg-primary px-5 text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-foreground transition-colors hover:bg-primary-dark"
                   >
                     Find visa options
                   </button>
                 </div>
               </form>
 
-              <p className="mt-4 text-sm leading-7 text-[#7a9a85]">
+              <p className="mt-4 text-sm leading-7 text-muted-foreground">
                 Popular destinations below jump straight into available visa support products.
               </p>
             </div>

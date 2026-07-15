@@ -40,42 +40,42 @@ export default async function AdminPage({params}: AdminPageProps) {
       />
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Card className="border-[#e8e0d0] bg-[#f0ebe0] shadow-none">
+        <Card className="border-border bg-secondary shadow-none">
           <CardContent className="space-y-2 p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Bookings today
             </p>
-            <p className="font-display text-4xl italic text-[#1c3d2e]">
+            <p className="font-display text-4xl italic text-foreground">
               {analytics.metrics.bookingsToday}
             </p>
           </CardContent>
         </Card>
-        <Card className="border-[#e8e0d0] bg-[#f0ebe0] shadow-none">
+        <Card className="border-border bg-secondary shadow-none">
           <CardContent className="space-y-2 p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Bookings this week
             </p>
-            <p className="font-display text-4xl italic text-[#1c3d2e]">
+            <p className="font-display text-4xl italic text-foreground">
               {analytics.metrics.bookingsThisWeek}
             </p>
           </CardContent>
         </Card>
-        <Card className="border-[#e8e0d0] bg-[#f0ebe0] shadow-none">
+        <Card className="border-border bg-secondary shadow-none">
           <CardContent className="space-y-2 p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Bookings this month
             </p>
-            <p className="font-display text-4xl italic text-[#1c3d2e]">
+            <p className="font-display text-4xl italic text-foreground">
               {analytics.metrics.bookingsThisMonth}
             </p>
           </CardContent>
         </Card>
-        <Card className="border-[#e8e0d0] bg-[#f0ebe0] shadow-none">
+        <Card className="border-border bg-secondary shadow-none">
           <CardContent className="space-y-2 p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Active users right now
             </p>
-            <p className="font-display text-4xl italic text-[#1c3d2e]">
+            <p className="font-display text-4xl italic text-foreground">
               {analytics.metrics.activeUsersNow}
             </p>
           </CardContent>
@@ -83,12 +83,12 @@ export default async function AdminPage({params}: AdminPageProps) {
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Card className="border-[#e8e0d0] bg-white shadow-none">
+        <Card className="border-border bg-card shadow-none">
           <CardContent className="space-y-2 p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Revenue today
             </p>
-            <p className="font-display text-3xl italic text-[#1c3d2e]">
+            <p className="font-display text-3xl italic text-foreground">
               {formatMoney(
                 {amountMinor: analytics.metrics.revenueTodayMinor, currency: "EUR"},
                 params.locale
@@ -96,12 +96,12 @@ export default async function AdminPage({params}: AdminPageProps) {
             </p>
           </CardContent>
         </Card>
-        <Card className="border-[#e8e0d0] bg-white shadow-none">
+        <Card className="border-border bg-card shadow-none">
           <CardContent className="space-y-2 p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Revenue this week
             </p>
-            <p className="font-display text-3xl italic text-[#1c3d2e]">
+            <p className="font-display text-3xl italic text-foreground">
               {formatMoney(
                 {amountMinor: analytics.metrics.revenueThisWeekMinor, currency: "EUR"},
                 params.locale
@@ -109,12 +109,12 @@ export default async function AdminPage({params}: AdminPageProps) {
             </p>
           </CardContent>
         </Card>
-        <Card className="border-[#e8e0d0] bg-white shadow-none">
+        <Card className="border-border bg-card shadow-none">
           <CardContent className="space-y-2 p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Revenue this month
             </p>
-            <p className="font-display text-3xl italic text-[#1c3d2e]">
+            <p className="font-display text-3xl italic text-foreground">
               {formatMoney(
                 {amountMinor: analytics.metrics.revenueThisMonthMinor, currency: "EUR"},
                 params.locale
@@ -122,21 +122,21 @@ export default async function AdminPage({params}: AdminPageProps) {
             </p>
           </CardContent>
         </Card>
-        <Card className="border-[#e8e0d0] bg-white shadow-none">
+        <Card className="border-border bg-card shadow-none">
           <CardContent className="grid gap-3 p-5">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Pending support tickets
               </p>
-              <p className="mt-2 font-display text-3xl italic text-[#1c3d2e]">
+              <p className="mt-2 font-display text-3xl italic text-foreground">
                 {analytics.metrics.pendingSupportTickets}
               </p>
             </div>
             <div className="border-t border-[#e8e0d0] pt-3">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Pending visa applications
               </p>
-              <p className="mt-2 font-display text-3xl italic text-[#1c3d2e]">
+              <p className="mt-2 font-display text-3xl italic text-foreground">
                 {analytics.metrics.pendingVisaApplications}
               </p>
             </div>
@@ -154,65 +154,65 @@ export default async function AdminPage({params}: AdminPageProps) {
       />
 
       <section className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-        <Card className="border-[#e8e0d0] bg-white shadow-none">
+        <Card className="border-border bg-card shadow-none">
           <CardHeader>
-            <CardTitle className="font-display text-[28px] italic text-[#1c3d2e]">
+            <CardTitle className="font-display text-[28px] italic text-card-foreground">
               Top booked routes
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {analytics.topRoutes.length === 0 ? (
-              <p className="text-sm text-[#56705f]">
+              <p className="text-sm text-muted-foreground">
                 No flight routes have been booked yet.
               </p>
             ) : (
               analytics.topRoutes.map((route, index) => (
                 <div
                   key={route.label}
-                  className="rounded-lg border border-[#e8e0d0] bg-[#f7f3ec] p-4"
+                  className="rounded-lg border border-border bg-background p-4"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-3">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a9a85]">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                       Rank {index + 1}
                     </p>
-                    <p className="font-display text-[26px] italic text-[#1c3d2e]">
+                    <p className="font-display text-[26px] italic text-foreground">
                       {route.value}
                     </p>
                   </div>
-                  <p className="mt-3 text-lg font-semibold text-[#1c3d2e]">{route.label}</p>
+                  <p className="mt-3 text-lg font-semibold text-foreground">{route.label}</p>
                 </div>
               ))
             )}
           </CardContent>
         </Card>
 
-        <Card className="border-[#e8e0d0] bg-white shadow-none">
+        <Card className="border-border bg-card shadow-none">
           <CardHeader>
-            <CardTitle className="font-display text-[28px] italic text-[#1c3d2e]">
+            <CardTitle className="font-display text-[28px] italic text-card-foreground">
               Recent bookings
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {analytics.recentBookings.length === 0 ? (
-              <p className="text-sm text-[#56705f]">
+              <p className="text-sm text-muted-foreground">
                 No bookings have been created yet.
               </p>
             ) : (
               analytics.recentBookings.map((booking) => (
                 <Link
                   key={booking.bookingId}
-                  className="block rounded-lg border border-[#e8e0d0] bg-[#f7f3ec] p-4 no-underline transition-colors hover:border-[#c9a84c]"
+                  className="block rounded-lg border border-border bg-background p-4 no-underline transition-colors hover:border-primary/40"
                   href={`/${params.locale}/admin/bookings/${booking.bookingId}`}
                 >
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="space-y-1">
-                      <p className="font-semibold text-[#1c3d2e]">
+                      <p className="font-semibold text-foreground">
                         {booking.bookingReference}
                       </p>
-                      <p className="text-sm text-[#56705f]">
+                      <p className="text-sm text-muted-foreground">
                         {booking.customerName}
                       </p>
-                      <p className="text-xs uppercase tracking-[0.16em] text-[#7a9a85]">
+                      <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                         {t(`dashboard.bookingTypeOptions.${booking.primaryBookingType}`)}
                       </p>
                     </div>
@@ -227,7 +227,7 @@ export default async function AdminPage({params}: AdminPageProps) {
                           status={booking.paymentStatus}
                         />
                       </div>
-                      <p className="font-display text-[24px] italic text-[#1c3d2e]">
+                      <p className="font-display text-[24px] italic text-foreground">
                         {formatMoney(
                           {
                             amountMinor: booking.totalAmountMinor,
@@ -238,7 +238,7 @@ export default async function AdminPage({params}: AdminPageProps) {
                       </p>
                     </div>
                   </div>
-                  <p className="mt-3 text-xs uppercase tracking-[0.18em] text-[#7a9a85]">
+                  <p className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
                     {formatDateTime(booking.createdAt, params.locale)}
                   </p>
                 </Link>

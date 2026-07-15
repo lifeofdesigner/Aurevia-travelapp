@@ -22,7 +22,7 @@ export function ChatLauncher({
     <Button
       aria-label={isOpen ? "Close chat" : "Open chat"}
       className={cn(
-        "fixed bottom-5 z-50 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-[0_18px_45px_rgba(17,29,21,0.25)] hover:bg-primary-light",
+        "fixed bottom-5 z-50 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-soft hover:bg-primary-light",
         position === "bottom-left" ? "left-5" : "right-5"
       )}
       onClick={onClick}

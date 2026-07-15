@@ -7,8 +7,8 @@ export default async function AdminForgotPasswordPage() {
   const branding = await getSiteBranding();
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#1c3d2e] px-4 py-10">
-      <div className="w-full max-w-[420px] rounded-[10px] bg-white p-10 shadow-[0_32px_90px_rgba(8,22,16,0.28)]">
+    <main className="flex min-h-screen items-center justify-center bg-primary px-4 py-10">
+      <div className="w-full max-w-[420px] rounded-[10px] bg-card p-10 shadow-2xl">
         <div className="space-y-4 text-center">
           <div className="space-y-2">
             {branding.logoUrl ? (
@@ -21,16 +21,16 @@ export default async function AdminForgotPasswordPage() {
                 width={220}
               />
             ) : (
-              <h1 className="font-display text-[36px] leading-none text-[#1c3d2e]">
+              <h1 className="font-display text-[36px] leading-none text-foreground">
                 {branding.siteName}
               </h1>
             )}
-            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#7a9a85]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">
               Admin Password Reset
             </p>
           </div>
-          <div className="mx-auto h-px w-16 bg-[#c9a84c]" />
-          <p className="text-sm leading-6 text-[#5d7364]">
+          <div className="mx-auto h-px w-16 bg-primary" />
+          <p className="text-sm leading-6 text-muted-foreground">
             Enter the admin email address and we&apos;ll send a secure password reset link.
           </p>
         </div>

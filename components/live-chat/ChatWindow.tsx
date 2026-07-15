@@ -60,7 +60,7 @@ export function ChatWindow({
     conversation.ratings.length === 0;
 
   return (
-    <section className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-[0_24px_70px_rgba(17,29,21,0.24)]">
+    <section className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-2xl">
       <header className="bg-primary px-4 py-4 text-primary-foreground">
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -75,7 +75,7 @@ export function ChatWindow({
               Offline
             </span>
           ) : (
-            <span className="rounded-full bg-emerald-400/20 px-2.5 py-1 text-xs text-emerald-50">
+            <span className="rounded-full bg-primary-foreground/15 px-2.5 py-1 text-xs text-primary-foreground/90">
               Online
             </span>
           )}

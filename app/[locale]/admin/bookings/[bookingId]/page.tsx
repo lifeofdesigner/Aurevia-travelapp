@@ -85,12 +85,12 @@ export default async function AdminBookingDetailPage({
       />
 
       <div className="flex flex-wrap gap-3">
-        <Button asChild className="bg-[#c9a84c] text-[#1c3d2e] hover:bg-[#b99536]">
+        <Button asChild>
           <Link href={`/api/bookings/${booking.bookingId}/ticket?locale=${params.locale}`} target="_blank">
             Download E-Ticket
           </Link>
         </Button>
-        <Button asChild className="bg-[#1c3d2e] text-white hover:bg-[#111d15]">
+        <Button asChild className="bg-primary text-primary-foreground hover:bg-primary-dark">
           <Link href={`/api/admin/bookings/${booking.bookingId}/pdf?locale=${params.locale}`} target="_blank">
             Download booking PDF
           </Link>

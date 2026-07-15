@@ -32,7 +32,7 @@ export function CurrencySwitcherShell({
           "font-semibold uppercase tracking-[0.18em]",
           isHeaderVariant
             ? "sr-only"
-            : "text-[10px] text-[rgba(232,223,200,0.55)]"
+            : "text-[10px] text-muted-foreground"
         )}
       >
         {label}
@@ -47,8 +47,8 @@ export function CurrencySwitcherShell({
           className={cn(
             "w-full appearance-none font-semibold transition-colors focus-visible:outline-none",
             isHeaderVariant
-              ? "h-8 rounded-[3px] border border-[rgba(232,223,200,0.16)] bg-[rgba(17,29,21,0.25)] px-3 pr-8 text-[11px] uppercase tracking-[0.08em] text-[#e8dfc8] focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1c3d2e]"
-              : "h-11 rounded-[8px] border border-[rgba(232,223,200,0.16)] bg-[rgba(17,29,21,0.35)] px-4 pr-10 text-[12px] uppercase tracking-[0.08em] text-[#f5f0e8] focus-visible:ring-2 focus-visible:ring-[#c9a84c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1c3d2e]"
+              ? "h-8 rounded-[3px] border border-border/60 bg-background/60 px-3 pr-8 text-[11px] uppercase tracking-[0.08em] text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              : "h-11 rounded-[8px] border border-input bg-background px-4 pr-10 text-[12px] uppercase tracking-[0.08em] text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           )}
         >
           {HEADER_DISPLAY_CURRENCIES.map((option) => (
@@ -60,7 +60,7 @@ export function CurrencySwitcherShell({
         <ChevronDown
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#c9a84c]",
+            "pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground",
             isHeaderVariant ? "h-3.5 w-3.5" : "h-4 w-4"
           )}
         />

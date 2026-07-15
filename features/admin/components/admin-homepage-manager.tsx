@@ -203,17 +203,17 @@ function ConfirmDeleteDialog({
   }
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-[#111d15]/55 px-4">
-      <div className="w-full max-w-md rounded-lg border border-[#e8e0d0] bg-white p-6 shadow-[0_30px_80px_rgba(17,29,21,0.24)]">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-foreground/55 px-4">
+      <div className="w-full max-w-md rounded-lg border border-border bg-card p-6 shadow-2xl">
         <div className="space-y-3">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7a9a85]">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             Delete item
           </p>
-          <h2 className="font-display text-[28px] italic text-[#1c3d2e]">
+          <h2 className="font-display text-[28px] italic text-card-foreground">
             Remove this entry?
           </h2>
-          <p className="text-sm leading-7 text-[#56705f]">
-            This will permanently delete <span className="font-semibold text-[#1c3d2e]">{deleteState.label}</span> from the homepage manager.
+          <p className="text-sm leading-7 text-muted-foreground">
+            This will permanently delete <span className="font-semibold text-foreground">{deleteState.label}</span> from the homepage manager.
           </p>
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
@@ -800,34 +800,34 @@ export function AdminHomepageManager({initialData}: AdminHomepageManagerProps) {
               </CardHeader>
               <CardContent>
                 <div
-                  className="overflow-hidden rounded-lg bg-[#1c3d2e]"
+                  className="overflow-hidden rounded-lg bg-primary"
                   style={
                     hero.bgImageUrl
                       ? {
-                          backgroundImage: `linear-gradient(rgba(17, 29, 21, 0.72), rgba(17, 29, 21, 0.8)), url(${hero.bgImageUrl})`,
+                          backgroundImage: `linear-gradient(rgba(10, 22, 60, 0.72), rgba(10, 22, 60, 0.8)), url(${hero.bgImageUrl})`,
                           backgroundPosition: "center",
                           backgroundSize: "cover"
                         }
                       : undefined
                   }
                 >
-                  <div className="space-y-5 px-6 py-8 text-[#f5f0e8]">
-                    <span className="inline-flex rounded-[10px] border border-[#c9a84c] px-4 py-2 text-[11px] tracking-[0.22em]">
+                  <div className="space-y-5 px-6 py-8 text-primary-foreground">
+                    <span className="inline-flex rounded-[10px] border border-primary-foreground/40 px-4 py-2 text-[11px] tracking-[0.22em]">
                       Location-based concierge
                     </span>
                     <div className="space-y-3">
                       <h2 className="font-display text-[38px] italic leading-[0.96]">
                         {hero.headline || "Your headline preview"}
                       </h2>
-                      <p className="max-w-[30rem] text-[13px] leading-6 text-[rgba(232,223,200,0.76)]">
+                      <p className="max-w-[30rem] text-[13px] leading-6 text-primary-foreground/75">
                         {hero.subheadline || "Your supporting copy preview appears here."}
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <span className="inline-flex min-h-[44px] items-center justify-center rounded-md bg-[#c9a84c] px-5 text-[12px] font-semibold text-[#1c3d2e]">
+                      <span className="inline-flex min-h-[44px] items-center justify-center rounded-md bg-background px-5 text-[12px] font-semibold text-foreground">
                         {hero.ctaText || "Primary CTA"}
                       </span>
-                      <span className="inline-flex min-h-[44px] items-center justify-center rounded-md border border-white/25 px-5 text-[12px] font-semibold text-[#f5f0e8]">
+                      <span className="inline-flex min-h-[44px] items-center justify-center rounded-md border border-primary-foreground/25 px-5 text-[12px] font-semibold text-primary-foreground">
                         View Destinations
                       </span>
                     </div>

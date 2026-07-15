@@ -39,16 +39,16 @@ export function ConfirmDialog({
   return (
     <div
       aria-modal="true"
-      className="fixed inset-0 z-[70] flex items-center justify-center bg-[#111d15]/55 px-4"
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-foreground/55 px-4"
       role="dialog"
     >
-      <div className="w-full max-w-md rounded-lg border border-[#e8e0d0] bg-white p-6 shadow-[0_30px_80px_rgba(17,29,21,0.24)]">
+      <div className="w-full max-w-md rounded-lg border border-border bg-card p-6 shadow-2xl">
         <div className="space-y-3">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7a9a85]">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             Confirm action
           </p>
-          <h2 className="font-display text-[28px] italic text-[#1c3d2e]">{title}</h2>
-          <p className="text-sm leading-7 text-[#56705f]">{description}</p>
+          <h2 className="font-display text-[28px] italic text-card-foreground">{title}</h2>
+          <p className="text-sm leading-7 text-muted-foreground">{description}</p>
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button

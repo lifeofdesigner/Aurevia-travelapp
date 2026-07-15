@@ -371,7 +371,7 @@ export function AdminSiteSettingsManager({
               <div className="grid gap-4 rounded-lg border border-border/80 bg-background/70 p-4 md:grid-cols-[180px_1fr]">
                 <div
                   aria-label="Current brand logo preview"
-                  className="flex h-24 items-center justify-center rounded-md border border-border/80 bg-[#1c3d2e] bg-contain bg-center bg-no-repeat px-4 text-center text-sm font-semibold text-[#e8dfc8]"
+                  className="flex h-24 items-center justify-center rounded-md border border-border/80 bg-primary bg-contain bg-center bg-no-repeat px-4 text-center text-sm font-semibold text-primary-foreground"
                   style={
                     generalAssets.logoUrl
                       ? {backgroundImage: `url(${generalAssets.logoUrl})`}
@@ -846,7 +846,7 @@ export function AdminSiteSettingsManager({
                       <p className="text-sm text-muted-foreground">{preview.subject}</p>
                     </div>
                     <Button
-                      className="bg-[#c9a84c] text-[#1c3d2e] hover:bg-[#b99536]"
+                      className="bg-primary text-primary-foreground hover:bg-primary-dark"
                       disabled={pendingTestTemplate === preview.key}
                       onClick={() => void sendTestEmail(preview.key)}
                       type="button"
