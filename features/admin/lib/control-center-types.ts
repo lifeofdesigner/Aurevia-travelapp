@@ -85,6 +85,7 @@ export type AdminGeneralSettings = {
   siteName: string;
   supportPhone: string;
   tagline: string;
+  ticketLogoSize: "small" | "medium" | "large";
   whatsappNumber: string;
   websiteTheme: SiteThemeKey;
 };

@@ -11,6 +11,7 @@ import {
   formatPdfDuration,
   formatPdfMoney,
   defaultPdfBranding,
+  getTicketLogoDimensions,
   type PdfBranding,
   pdfStyles
 } from "./shared";
@@ -209,7 +210,7 @@ export function FlightTicket({
               {branding.logoUrl ? (
                 <>
                   {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                  <Image src={branding.logoUrl} style={pdfStyles.brandImage} />
+                  <Image src={branding.logoUrl} style={getTicketLogoDimensions(branding.ticketLogoSize)} />
                 </>
               ) : (
                 <Text style={pdfStyles.brandName}>{branding.siteName}</Text>

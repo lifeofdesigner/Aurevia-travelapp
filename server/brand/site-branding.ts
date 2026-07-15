@@ -7,6 +7,8 @@ import {type Json} from "@/types/supabase";
 
 export const SITE_GENERAL_SETTINGS_KEY = "admin_site_settings_general";
 
+export type TicketLogoSize = "small" | "medium" | "large";
+
 export type SiteBranding = {
   businessAddress: string;
   businessCity: string;
@@ -18,6 +20,7 @@ export type SiteBranding = {
   siteName: string;
   supportPhone: string;
   tagline: string;
+  ticketLogoSize: TicketLogoSize;
   whatsappNumber: string;
   websiteTheme: SiteThemeKey;
 };
@@ -36,6 +39,10 @@ function stringValue(value: unknown, fallback: string) {
 
 function optionalUrl(value: unknown) {
   return typeof value === "string" && value.trim() ? value.trim() : null;
+}
+
+function ticketLogoSizeValue(value: unknown): TicketLogoSize {
+  return value === "small" || value === "medium" || value === "large" ? value : "medium";
 }
 
 function splitAddressLocation(address: string) {
@@ -91,6 +98,7 @@ export function getDefaultSiteBranding(): SiteBranding {
     siteName: env.AUREVIA_COMPANY_NAME,
     supportPhone: "+43 1 000 0000",
     tagline: "Curated global journeys for modern travelers.",
+    ticketLogoSize: "medium" as TicketLogoSize,
     whatsappNumber: "+43 660 000 0000",
     websiteTheme: "executive_emerald"
   };
@@ -126,6 +134,7 @@ export function normalizeSiteBranding(value: Json | null | undefined): SiteBrand
     siteName: stringValue(record.siteName, defaults.siteName),
     supportPhone: stringValue(record.supportPhone, defaults.supportPhone),
     tagline: stringValue(record.tagline, defaults.tagline),
+    ticketLogoSize: ticketLogoSizeValue(record.ticketLogoSize),
     whatsappNumber: stringValue(record.whatsappNumber, defaults.whatsappNumber),
     websiteTheme: normalizeSiteTheme(record.websiteTheme)
   };

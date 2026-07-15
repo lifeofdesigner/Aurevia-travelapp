@@ -312,7 +312,8 @@ export function AdminSiteSettingsManager({
               supportPhone: String(formData.get("supportPhone") ?? ""),
               tagline: String(formData.get("tagline") ?? ""),
               whatsappNumber: String(formData.get("whatsappNumber") ?? ""),
-              websiteTheme: String(formData.get("websiteTheme") ?? data.general.websiteTheme) as SiteThemeKey
+              websiteTheme: String(formData.get("websiteTheme") ?? data.general.websiteTheme) as SiteThemeKey,
+              ticketLogoSize: String(formData.get("ticketLogoSize") ?? data.general.ticketLogoSize ?? "medium")
             });
           }}
         >
@@ -389,6 +390,18 @@ export function AdminSiteSettingsManager({
                   <p className="text-xs leading-5 text-muted-foreground">
                     Upload a transparent PNG, JPG, or WebP logo. It will appear in the site header, footer, browser metadata, and branded documents after saving.
                   </p>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="ticket-logo-size">Logo size on e-tickets &amp; PDF documents</Label>
+                    <Select
+                      id="ticket-logo-size"
+                      name="ticketLogoSize"
+                      defaultValue={data.general.ticketLogoSize ?? "medium"}
+                    >
+                      <option value="small">Small (100 × 28 px)</option>
+                      <option value="medium">Medium (150 × 40 px) — default</option>
+                      <option value="large">Large (200 × 56 px)</option>
+                    </Select>
+                  </div>
                   <div className="flex flex-wrap items-center gap-3">
                     <Input
                       readOnly

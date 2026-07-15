@@ -34,7 +34,16 @@ export type PdfBranding = {
   logoUrl?: string | null;
   siteName: string;
   supportPhone: string;
+  ticketLogoSize?: "small" | "medium" | "large";
 };
+
+export function getTicketLogoDimensions(size: "small" | "medium" | "large" | undefined) {
+  switch (size) {
+    case "small": return {maxHeight: 28, maxWidth: 100};
+    case "large": return {maxHeight: 56, maxWidth: 200};
+    default: return {maxHeight: 40, maxWidth: 150};
+  }
+}
 
 export const defaultPdfBranding: PdfBranding = {
   businessAddress: "City, Country",
