@@ -22,6 +22,7 @@ const generalSettingsSchema = z.object({
   siteName: z.string().trim().min(1),
   supportPhone: z.string().trim().min(1),
   tagline: z.string().trim().min(1),
+  ticketLogoSize: z.enum(["small", "medium", "large", "xl", "2xl"]).default("medium"),
   whatsappNumber: z.string().trim().min(1),
   websiteTheme: z.enum(SITE_THEME_KEYS)
 }).transform((value) => ({
