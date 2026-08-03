@@ -391,7 +391,7 @@ export function AdminSiteSettingsManager({
                     Upload a transparent PNG, JPG, or WebP logo. It will appear in the site header, footer, browser metadata, and branded documents after saving.
                   </p>
                   <div className="space-y-1.5">
-                    <Label htmlFor="ticket-logo-size">Logo size on e-tickets &amp; PDF documents</Label>
+                    <Label htmlFor="ticket-logo-size">Logo size — site header &amp; PDF documents</Label>
                     <Select
                       id="ticket-logo-size"
                       name="ticketLogoSize"

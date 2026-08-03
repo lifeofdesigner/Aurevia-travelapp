@@ -36,6 +36,18 @@ function isActivePath(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+const HEADER_LOGO_SIZES: Record<string, {cls: string; w: number; h: number}> = {
+  small:  {cls: "max-h-7 w-auto object-contain",  w: 120, h: 28},
+  medium: {cls: "max-h-9 w-auto object-contain",  w: 156, h: 36},
+  large:  {cls: "max-h-11 w-auto object-contain", w: 200, h: 44},
+  xl:     {cls: "max-h-14 w-auto object-contain", w: 260, h: 56},
+  "2xl":  {cls: "max-h-16 w-auto object-contain", w: 320, h: 64}
+};
+
+function getHeaderLogoSize(size: string | undefined) {
+  return HEADER_LOGO_SIZES[size ?? "medium"] ?? HEADER_LOGO_SIZES.medium;
+}
+
 function splitBrandName(siteName: string) {
   const [first, ...rest] = siteName.trim().split(/\s+/);
 
@@ -216,7 +228,7 @@ export function SiteHeader({
           : "border-b border-transparent"
       )}
     >
-      <div className="container flex h-[60px] items-center justify-between gap-5">
+      <div className="container flex min-h-[60px] items-center justify-between gap-5 py-2">
         <Link
           href={homeHref}
           className="inline-flex min-h-10 items-center gap-2 no-underline"
@@ -224,11 +236,11 @@ export function SiteHeader({
           {branding.logoUrl ? (
             <Image
               alt={`${branding.siteName} logo`}
-              className="max-h-9 w-auto object-contain"
-              height={36}
+              className={getHeaderLogoSize(branding.ticketLogoSize).cls}
+              height={getHeaderLogoSize(branding.ticketLogoSize).h}
               priority
               src={branding.logoUrl}
-              width={156}
+              width={getHeaderLogoSize(branding.ticketLogoSize).w}
             />
           ) : (
             <>
