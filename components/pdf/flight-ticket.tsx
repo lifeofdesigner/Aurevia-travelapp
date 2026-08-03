@@ -208,6 +208,12 @@ const s = StyleSheet.create({
     marginBottom: 3,
     textTransform: "uppercase"
   },
+  airlineLogoImg: {
+    height: 32,
+    marginBottom: 4,
+    objectFit: "contain",
+    width: 90
+  },
   carrierBig: {
     color: DARK,
     fontFamily: "Helvetica-Bold",
@@ -454,8 +460,14 @@ function FlightSegmentPanel({
         <View style={s.flightColRow}>
           {/* Carrier + Flight No */}
           <View style={s.colCarrierFlight}>
-            <Text style={s.colHeaderLabel}>Carrier Code</Text>
-            <Text style={s.carrierBig}>{segment.airlineCode}</Text>
+            {isLikelyPdfRasterImageUrl(segment.airlineLogoUrl) ? (
+              <Image
+                src={segment.airlineLogoUrl as string}
+                style={s.airlineLogoImg}
+              />
+            ) : (
+              <Text style={s.carrierBig}>{segment.airlineCode}</Text>
+            )}
             <Text style={s.subLabel}>Flight No</Text>
             <Text style={s.carrierBig}>{segment.flightNumber}</Text>
           </View>
