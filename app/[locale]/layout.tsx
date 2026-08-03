@@ -2,7 +2,7 @@ import "@/app/globals.css";
 
 import {type Metadata} from "next";
 import {cookies} from "next/headers";
-import {Inter, Libre_Franklin} from "next/font/google";
+import {Carlito} from "next/font/google";
 import {NextIntlClientProvider} from "next-intl";
 import {getMessages, getTranslations} from "next-intl/server";
 import {notFound} from "next/navigation";
@@ -18,15 +18,18 @@ import {ROUTES} from "@/lib/routes";
 import {buildLocaleAlternates} from "@/lib/seo";
 import {buildMetadataIcons, getSiteBranding} from "@/server/brand/site-branding";
 
-const inter = Inter({
+const carlito = Carlito({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
   variable: "--font-sans",
   display: "swap"
 });
 
-const libreFranklin = Libre_Franklin({
+const carlitoDisplay = Carlito({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap"
 });
@@ -136,7 +139,7 @@ export default async function LocaleLayout({children, params}: LocaleLayoutProps
       lang={params.locale}
       suppressHydrationWarning
       data-site-theme={branding.websiteTheme}
-      className={`${libreFranklin.variable} ${inter.variable}`}
+      className={`${carlitoDisplay.variable} ${carlito.variable}`}
     >
       <body className="font-sans">
         <NextIntlClientProvider

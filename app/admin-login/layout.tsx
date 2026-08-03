@@ -1,22 +1,25 @@
 import "@/app/globals.css";
 
 import {type Metadata} from "next";
-import {Inter, Libre_Franklin} from "next/font/google";
+import {Carlito} from "next/font/google";
 import {type ReactNode} from "react";
 
 import {GlobalInteractionFeedback} from "@/components/shared/feedback/global-interaction-feedback";
 import {buildMetadataIcons, getSiteBranding} from "@/server/brand/site-branding";
 
-const libreFranklin = Libre_Franklin({
+const carlito = Carlito({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-display",
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-sans",
   display: "swap"
 });
 
-const inter = Inter({
+const carlitoDisplay = Carlito({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
   display: "swap"
 });
 
@@ -41,7 +44,7 @@ export default async function AdminLoginLayout({children}: AdminLoginLayoutProps
   return (
     <html
       lang="en"
-      className={`${libreFranklin.variable} ${inter.variable}`}
+      className={`${carlitoDisplay.variable} ${carlito.variable}`}
       data-site-theme={branding.websiteTheme}
       suppressHydrationWarning
     >
