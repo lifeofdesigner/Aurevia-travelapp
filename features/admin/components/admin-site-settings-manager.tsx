@@ -400,6 +400,8 @@ export function AdminSiteSettingsManager({
                       <option value="small">Small (100 × 28 px)</option>
                       <option value="medium">Medium (150 × 40 px) — default</option>
                       <option value="large">Large (200 × 56 px)</option>
+                      <option value="xl">Extra Large (280 × 80 px)</option>
+                      <option value="2xl">Full Width (380 × 110 px)</option>
                     </Select>
                   </div>
                   <div className="flex flex-wrap items-center gap-3">

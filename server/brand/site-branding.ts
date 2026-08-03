@@ -7,7 +7,7 @@ import {type Json} from "@/types/supabase";
 
 export const SITE_GENERAL_SETTINGS_KEY = "admin_site_settings_general";
 
-export type TicketLogoSize = "small" | "medium" | "large";
+export type TicketLogoSize = "small" | "medium" | "large" | "xl" | "2xl";
 
 export type SiteBranding = {
   businessAddress: string;
@@ -42,7 +42,9 @@ function optionalUrl(value: unknown) {
 }
 
 function ticketLogoSizeValue(value: unknown): TicketLogoSize {
-  return value === "small" || value === "medium" || value === "large" ? value : "medium";
+  return value === "small" || value === "medium" || value === "large" || value === "xl" || value === "2xl"
+    ? value
+    : "medium";
 }
 
 function splitAddressLocation(address: string) {

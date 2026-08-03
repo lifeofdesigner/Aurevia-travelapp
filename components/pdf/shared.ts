@@ -34,14 +34,16 @@ export type PdfBranding = {
   logoUrl?: string | null;
   siteName: string;
   supportPhone: string;
-  ticketLogoSize?: "small" | "medium" | "large";
+  ticketLogoSize?: "small" | "medium" | "large" | "xl" | "2xl";
 };
 
-export function getTicketLogoDimensions(size: "small" | "medium" | "large" | undefined) {
+export function getTicketLogoDimensions(size: "small" | "medium" | "large" | "xl" | "2xl" | undefined) {
   switch (size) {
-    case "small": return {maxHeight: 28, maxWidth: 100};
-    case "large": return {maxHeight: 56, maxWidth: 200};
-    default: return {maxHeight: 40, maxWidth: 150};
+    case "small":  return {maxHeight: 28,  maxWidth: 100};
+    case "large":  return {maxHeight: 56,  maxWidth: 200};
+    case "xl":     return {maxHeight: 80,  maxWidth: 280};
+    case "2xl":    return {maxHeight: 110, maxWidth: 380};
+    default:       return {maxHeight: 40,  maxWidth: 150};
   }
 }
 
